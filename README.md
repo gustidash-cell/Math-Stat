@@ -18,6 +18,8 @@ Klik tautan resmi di bawah ini untuk membuka modul web interaktif multi-tab seca
 ## 👨‍🏫 Informasi Pengampu &amp; Pengembang
 
 - **Dosen Pengampu &amp; Pengembang**: Gusti Uripno, M.Pd.
+- **Mata Kuliah**: Statistika Matematika I (PMA4119)
+- **Bobot SKS**: 3 SKS (150 Menit Tatap Muka / Minggu)
 - **Program Studi**: Pendidikan Matematika
 - **Fakultas**: Keguruan dan Ilmu Pendidikan (FKIP)
 - **Perguruan Tinggi**: Universitas PGRI Ronggolawe (UNIROW) Tuban
