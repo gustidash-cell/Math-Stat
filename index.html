@@ -2,13 +2,1606 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=Statistika-Matematika-I-Modul-Lengkap.html?v=2">
-<title>Modul Lengkap Statistika Matematika I | Pengampu & Pengembang: Gusti Uripno</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul Lengkap Statistika Matematika I (Pertemuan 1–7) | Pengampu & Pengembang: Gusti Uripno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
-  window.location.href = "Statistika-Matematika-I-Modul-Lengkap.html?v=2";
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+  :root{
+    --paper: #faf8f3;
+    --paper-deep: #f1ede3;
+    --ink: #1c2b3a;
+    --ink-soft: #46586b;
+    --navy: #1c2b3a;
+    --teal: #2c6b5c;
+    --teal-soft: #e4efe9;
+    --ochre: #a5762f;
+    --ochre-soft: #f4e9d6;
+    --rule: #d8d0bf;
+    --max-w: 46rem;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  a{ color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover{ color: var(--ochre); }
+
+  /* Top Meeting Tabs Navigation */
+  header.global-nav{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--navy);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+  .nav-header-inner{
+    max-width: 82rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .brand-title{
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .brand-title span.badge{
+    background: var(--ochre);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    color: #fff;
+  }
+  .brand-author{
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #d1dbe5;
+    border-left: 1px solid rgba(255,255,255,0.25);
+    padding-left: 0.6rem;
+  }
+  .brand-author strong{
+    color: #fff;
+  }
+  
+  .tab-bar{
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+  }
+  .tab-btn{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #d1dbe5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .tab-btn:hover{
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+  }
+  .tab-btn.active{
+    background: var(--teal);
+    color: #fff;
+    border-color: var(--teal);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(44,107,92,0.4);
+  }
+
+  /* Layout Grid per Tab */
+  .tab-pane{
+    display: none;
+  }
+  .tab-pane.active{
+    display: block;
+  }
+
+  .layout{
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    max-width: 82rem;
+    margin: 0 auto;
+  }
+
+  /* Sidebar TOC */
+  nav.toc{
+    position: sticky;
+    top: 3.8rem;
+    align-self: start;
+    height: calc(100vh - 3.8rem);
+    overflow-y: auto;
+    padding: 2rem 1.25rem 2rem 1.5rem;
+    border-right: 1px solid var(--rule);
+    font-family: 'Source Serif 4', serif;
+    background: var(--paper);
+  }
+  nav.toc .kicker{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--ochre);
+    margin-bottom: 0.35rem;
+  }
+  nav.toc h2{
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.3;
+  }
+  nav.toc ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: sec;
+  }
+  nav.toc li{
+    counter-increment: sec;
+    margin-bottom: 0.2rem;
+  }
+  nav.toc a{
+    display: flex;
+    gap: 0.5rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.4rem;
+    border-radius: 3px;
+    transition: background 0.15s ease;
+  }
+  nav.toc a::before{
+    content: counter(sec, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ochre);
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+  nav.toc a:hover{ background: var(--paper-deep); color: var(--ink); }
+
+  .toc-foot{
+    margin-top: 1.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Main Content */
+  main{ padding: 0 2rem; }
+
+  header.hero{
+    max-width: var(--max-w);
+    margin: 2.5rem auto 2rem auto;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin: 0 0 0.9rem 0;
+    color: var(--navy);
+  }
+  .hero p.lede{
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 40rem;
+    margin: 0 0 1.2rem 0;
+  }
+  .meta-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+  }
+  .meta-row div span{
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ochre);
+    margin-bottom: 0.15rem;
+  }
+
+  section{
+    max-width: var(--max-w);
+    margin: 0 auto 3rem auto;
+    scroll-margin-top: 5.5rem;
+  }
+
+  h2.sec-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  h3.sub-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.18rem;
+    color: var(--navy);
+    margin: 1.8rem 0 0.7rem 0;
+  }
+
+  p{ margin: 0 0 1rem 0; }
+
+  .callout{
+    background: var(--teal-soft);
+    border-left: 3px solid var(--teal);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  /* Definition / Theorem / Example Boxes */
+  .box{
+    margin: 1.4rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .box-head{
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.65rem 1.1rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .box-body{ padding: 0.4rem 1.1rem 1.1rem 1.1rem; }
+  .box-body p:last-child{ margin-bottom: 0; }
+
+  .box.definisi{ border-left: 4px solid var(--teal); }
+  .box.definisi .box-head{ background: var(--teal-soft); color: var(--teal); }
+
+  .box.teorema{ border-left: 4px solid var(--ochre); }
+  .box.teorema .box-head{ background: var(--ochre-soft); color: var(--ochre); }
+
+  .box.contoh{ border-left: 4px solid var(--ink-soft); }
+  .box.contoh .box-head{ background: var(--paper-deep); color: var(--ink-soft); }
+
+  .box .tag{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0.85;
+  }
+
+  details.proof{
+    margin-top: 0.8rem;
+    border-top: 1px dashed var(--rule);
+    padding-top: 0.7rem;
+  }
+  details.proof summary{
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ochre);
+    list-style: none;
+  }
+  details.proof summary::-webkit-details-marker{ display: none; }
+  details.proof summary::before{
+    content: "▸ ";
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+  details.proof[open] summary::before{ transform: rotate(90deg); }
+  details.proof .proof-body{
+    margin-top: 0.6rem;
+    padding-left: 0.2rem;
+    font-size: 0.95rem;
+  }
+  details.proof .proof-body p:last-child{ margin-bottom: 0; }
+  .qed{ text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: bold; }
+
+  table{
+    border-collapse: collapse;
+    margin: 1rem auto;
+    font-size: 0.92rem;
+    width: 100%;
+    max-width: 38rem;
+  }
+  th, td{
+    border: 1px solid var(--rule);
+    padding: 0.45rem 0.75rem;
+    text-align: center;
+  }
+  th{ background: var(--paper-deep); font-weight: 600; color: var(--navy); }
+
+  /* Practice problems */
+  .quiz{
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0;
+    background: #fff;
+  }
+  .quiz .qnum{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ochre);
+    font-size: 0.78rem;
+    margin-bottom: 0.3rem;
+  }
+  .quiz details summary{
+    cursor: pointer;
+    color: var(--teal);
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+    font-weight: 600;
+  }
+  .quiz .ans{
+    margin-top: 0.5rem;
+    padding: 0.8rem 1rem;
+    background: var(--paper-deep);
+    font-size: 0.92rem;
+    border-radius: 3px;
+  }
+
+  .glossary-grid{
+    display grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .glossary-grid .term{
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.93rem;
+    align-items: baseline;
+  }
+  .glossary-grid .term .name{
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  footer.pagefoot{
+    max-width: var(--max-w);
+    margin: 0 auto 4rem auto;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .nav-link-btn{
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal);
+    cursor: pointer;
+  }
+
+  @media (max-width: 960px){
+    .layout{ grid-template-columns: 1fr; }
+    nav.toc{
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem;
+    }
+    main{ padding: 0 1.25rem; }
+    .hero h1{ font-size: 2rem; }
+  }
+</style>
 </head>
 <body>
-<p>Beralih ke Modul Interaktif... <a href="Statistika-Matematika-I-Modul-Lengkap.html?v=2">Klik di sini jika tidak otomatis dialihkan</a>.</p>
+
+<header class="global-nav">
+  <div class="nav-header-inner">
+    <div class="brand-title">
+      Statistika Matematika I <span class="badge">UNIROW TUBAN</span>
+      <span class="brand-author">Pengampu &amp; Pengembang: <strong>Gusti Uripno, M.Pd.</strong></span>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('p1')">P1: Konsep Peluang</button>
+      <button class="tab-btn" onclick="switchTab('p2')">P2: Peluang Bersyarat</button>
+      <button class="tab-btn" onclick="switchTab('p3')">P3: Teorema Bayes</button>
+      <button class="tab-btn" onclick="switchTab('p4')">P4: Peubah Acak</button>
+      <button class="tab-btn" onclick="switchTab('p5')">P5: FKP & Kumulatif</button>
+      <button class="tab-btn" onclick="switchTab('p6')">P6: Ekspektasi & Varians</button>
+      <button class="tab-btn" onclick="switchTab('p7')">P7: Review UTS</button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== TAB PERTEMUAN 1 ==================== -->
+<div id="p1" class="tab-pane active">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 1</div>
+      <h2>Konsep Dasar Peluang</h2>
+      <ol>
+        <li><a href="#p1-eksperimen">Eksperimen &amp; Ruang Sampel</a></li>
+        <li><a href="#p1-peristiwa">Peristiwa &amp; Operasi Himpunan</a></li>
+        <li><a href="#p1-bernoulli">Percobaan Bernoulli</a></li>
+        <li><a href="#p1-membilang">Teknik Membilang</a></li>
+        <li><a href="#p1-peluang-klasik">Peluang Klasik</a></li>
+        <li><a href="#p1-aksioma">Aksioma Peluang</a></li>
+        <li><a href="#p1-teorema">Teorema Turunan</a></li>
+        <li><a href="#p1-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p1-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 1.1 &mdash; mampu menjelaskan dan menerapkan prinsip dasar peluang.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 2.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 1</div>
+        <h1>Konsep Dasar Peluang</h1>
+        <p class="lede">Dari eksperimen dan ruang sampel, sampai ke aksioma peluang dan teorema-teorema turunannya beserta buktinya. Istilah dan notasi dijaga konsisten di seluruh modul ini.</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 2</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p1-eksperimen">
+        <h2 class="sec-title">1. Eksperimen, Titik Sampel, dan Ruang Sampel</h2>
+        <p>Titik tolak teori peluang adalah gagasan tentang <em>eksperimen</em>: sesuatu yang kita amati atau lakukan, yang hasilnya tidak dapat dipastikan sebelumnya.</p>
+
+        <div class="box definisi" id="def-1-1">
+          <div class="box-head"><span class="tag">DEFINISI 1.1</span> Eksperimen</div>
+          <div class="box-body">
+            <p>Eksperimen adalah suatu proses atau percobaan yang darinya suatu gejala atau pengukuran diamati, dan hasilnya tidak dapat diprediksi secara pasti sebelum eksperimen dilakukan.</p>
+          </div>
+        </div>
+
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 1.1</span></div>
+          <div class="box-body">
+            <p>Beberapa contoh eksperimen: (i) melempar sebuah uang logam satu kali atau dua kali; (ii) melempar sebuah dadu satu kali atau dua kali; (iii) menyusun bilangan dua digit dari angka $\{0,1,2,3\}$.</p>
+          </div>
+        </div>
+
+        <div class="box definisi" id="def-1-2">
+          <div class="box-head"><span class="tag">DEFINISI 1.2</span> Titik Sampel</div>
+          <div class="box-body">
+            <p>Titik sampel adalah suatu hasil dari eksperimen yang tidak dapat diuraikan lagi menjadi hasil yang lebih sederhana. Titik sampel dilambangkan dengan $E_i$, $i = 1, 2, 3, \dots$</p>
+          </div>
+        </div>
+
+        <div class="box definisi" id="def-1-3">
+          <div class="box-head"><span class="tag">DEFINISI 1.3</span> Ruang Sampel</div>
+          <div class="box-body">
+            <p>Ruang sampel adalah himpunan semua titik sampel yang mungkin terjadi dari suatu eksperimen, yaitu himpunan semua hasil yang mungkin. Ruang sampel dilambangkan dengan $S$.</p>
+          </div>
+        </div>
+
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 1.2</span></div>
+          <div class="box-body">
+            <p><strong>Melempar uang logam satu kali.</strong> Misalkan muka angka $= A$ dan muka gambar $= G$. Ruang sampelnya adalah $S = \{A, G\}$.</p>
+            <p><strong>Melempar uang logam dua kali.</strong> Ruang sampelnya adalah himpunan pasangan berurut $S = \{AA, AG, GA, GG\}$, sehingga $S$ memiliki empat titik sampel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-peristiwa">
+        <h2 class="sec-title">2. Peristiwa dan Operasi Himpunan</h2>
+        <p>Dari suatu eksperimen, kita biasanya tertarik pada bagian tertentu dari ruang sampel &mdash; inilah yang disebut peristiwa. Karena peristiwa adalah himpunan, semua operasi himpunan (gabungan, irisan, komplemen) berlaku padanya.</p>
+
+        <div class="box definisi" id="def-1-4">
+          <div class="box-head"><span class="tag">DEFINISI 1.4</span> Peristiwa</div>
+          <div class="box-body">
+            <p>Peristiwa adalah bagian dari ruang sampel yang menjadi pusat perhatian kita. Peristiwa merupakan himpunan bagian (subset) dari ruang sampel $S$, dan dilambangkan dengan huruf kapital, misalnya $A, B$.</p>
+          </div>
+        </div>
+
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 1.3</span></div>
+          <div class="box-body">
+            <p>Pada eksperimen pelemparan dua dadu, beberapa peristiwa yang dapat diamati di antaranya:</p>
+            <p>&bull; <strong>Mata pertama prima.</strong> Bilangan prima antara 1 dan 6 adalah 2, 3, dan 5, sehingga peristiwanya adalah $A = \{(x,y) \mid x = 2,3,5;\ y = 1,2,3,4,5,6\}$.</p>
+            <p>&bull; <strong>Jumlah mata merupakan bilangan kuadrat.</strong> Jumlah mata yang mungkin adalah $2, 3, \dots, 12$; yang merupakan kuadrat sempurna adalah 4 dan 9. Peristiwanya adalah $B = \{(2,2),(3,1),(1,3),(5,4),(4,5),(3,6),(6,3)\}$.</p>
+          </div>
+        </div>
+
+        <div class="box definisi" id="def-1-5">
+          <div class="box-head"><span class="tag">DEFINISI 1.5</span> Peristiwa Saling Lepas</div>
+          <div class="box-body">
+            <p>Dua peristiwa $A$ dan $B$ dikatakan <em>saling lepas</em> (mutually exclusive) apabila $A$ tidak mungkin terjadi bersama-sama dengan $B$, yaitu $A \cap B = \varnothing$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-bernoulli">
+        <h2 class="sec-title">3. Percobaan Bernoulli</h2>
+        <div class="box definisi" id="def-1-6">
+          <div class="box-head"><span class="tag">DEFINISI 1.6</span> Percobaan Bernoulli</div>
+          <div class="box-body">
+            <p>Suatu eksperimen disebut percobaan Bernoulli jika memenuhi keempat syarat berikut:</p>
+            <p>1. Ruang sampel diskrit yang hanya terdiri atas dua hasil, yaitu sukses ($s$) dan gagal ($g$), sehingga $S = \{s, g\}$;</p>
+            <p>2. Pengamatan dapat dilakukan berulang-ulang;</p>
+            <p>3. Peluang sukses dan peluang gagal tidak harus sama; dan</p>
+            <p>4. Peluang sukses dari satu pengamatan ke pengamatan berikutnya selalu konstan ($P(s) = p, P(g) = 1-p$).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-membilang">
+        <h2 class="sec-title">4. Teknik Membilang</h2>
+        <div class="box definisi">
+          <div class="box-head"><span class="tag">ATURAN 1.1</span> Aturan Perkalian</div>
+          <div class="box-body">
+            <p>Jika suatu operasi dapat dilakukan dengan $n_1$ cara, dan untuk setiap cara tersebut operasi kedua dapat dilakukan dengan $n_2$ cara, maka kedua operasi secara bersama-sama dapat dilakukan dengan $n_1 \times n_2$ cara.</p>
+          </div>
+        </div>
+        <div class="box definisi">
+          <div class="box-head"><span class="tag">ATURAN 1.2</span> Permutasi &amp; Kombinasi</div>
+          <div class="box-body">
+            <p>Permutasi $n$ objek diambil $r$: $P^n_r = \frac{n!}{(n-r)!}$. Kombinasi $n$ objek diambil $r$: $\binom{n}{r} = \frac{n!}{r!\,(n-r)!}$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-peluang-klasik">
+        <h2 class="sec-title">5. Peluang Klasik</h2>
+        <div class="box definisi" id="def-1-7">
+          <div class="box-head"><span class="tag">DEFINISI 1.7</span> Peluang Klasik</div>
+          <div class="box-body">
+            <p>Pada eksperimen dengan ruang sampel diskrit berhingga berpeluang sama, $P(A) = \frac{\#(A)}{\#(S)}$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-aksioma">
+        <h2 class="sec-title">6. Aksioma Peluang</h2>
+        <div class="box definisi" id="def-1-8">
+          <div class="box-head"><span class="tag">DEFINISI 1.8</span> Aksioma Peluang (Kolmogorov)</div>
+          <div class="box-body">
+            <p><strong>Aksioma 1.</strong> $P(A) \ge 0$ untuk setiap $A \subseteq S$.</p>
+            <p><strong>Aksioma 2.</strong> Jika $A_1, A_2, \dots$ saling lepas ($A_i \cap A_j = \varnothing$), maka $P\left(\bigcup_i A_i\right) = \sum_i P(A_i)$.</p>
+            <p><strong>Aksioma 3.</strong> $P(S) = 1$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-teorema">
+        <h2 class="sec-title">7. Teorema Turunan Aksioma Peluang</h2>
+        <div class="box teorema">
+          <div class="box-head"><span class="tag">TEOREMA 1.1</span> Aturan Komplemen</div>
+          <div class="box-body">
+            <p>Untuk setiap peristiwa $A \subset S$, $P(A) = 1 - P(A^c)$.</p>
+            <details class="proof">
+              <summary>Lihat bukti</summary>
+              <div class="proof-body">
+                <p>Karena $S = A \cup A^c$ dan $A \cap A^c = \varnothing$, berdasar Aksioma 2 dan 3: $P(S) = P(A) + P(A^c) = 1 \implies P(A) = 1 - P(A^c)$.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="box teorema">
+          <div class="box-head"><span class="tag">TEOREMA 1.4</span> Aturan Penjumlahan Peluang</div>
+          <div class="box-body">
+            <p>Untuk sebarang dua peristiwa $A$ dan $B$, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.</p>
+            <details class="proof">
+              <summary>Lihat bukti</summary>
+              <div class="proof-body">
+                <p>$A \cup B$ diuraikan menjadi gabungan saling lepas $A \cup (B \cap A^c)$. Maka $P(A \cup B) = P(A) + P(B \cap A^c)$. Karena $B = (A \cap B) \cup (B \cap A^c)$, diperoleh $P(B \cap A^c) = P(B) - P(A \cap B)$. Substitusi menghasilkan rumus di atas.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="p1-latihan">
+        <h2 class="sec-title">8. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Sebuah dadu adil dilempar satu kali. Hitung peluang muncul mata dadu genap atau prima.</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">Genap $A=\{2,4,6\}$, Prima $B=\{2,3,5\}$. $A \cap B = \{2\}$. $P(A \cup B) = \frac{3}{6} + \frac{3}{6} - \frac{1}{6} = \frac{5}{6}$.</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p1-glosarium">
+        <h2 class="sec-title">9. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">Peristiwa</span><span>Himpunan bagian dari ruang sampel $S$.</span></div>
+          <div class="term"><span class="name">Saling Lepas</span><span>Dua peristiwa $A$ dan $B$ dengan $A \cap B = \varnothing$.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p2')">Lanjut ke Pertemuan 2: Peluang Bersyarat &amp; Peristiwa Saling Bebas &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 2 ==================== -->
+<div id="p2" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 2</div>
+      <h2>Peluang Bersyarat &amp; Saling Bebas</h2>
+      <ol>
+        <li><a href="#p2-bersyarat">Definisi Peluang Bersyarat</a></li>
+        <li><a href="#p2-perkalian">Teorema Perkalian Peluang</a></li>
+        <li><a href="#p2-saling-bebas">Peristiwa Saling Bebas</a></li>
+        <li><a href="#p2-teorema-bebas">Teorema Sifat Independensi</a></li>
+        <li><a href="#p2-contoh">Contoh Soal &amp; Aplikasi</a></li>
+        <li><a href="#p2-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p2-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 1.2 &mdash; mampu menjelaskan dan menerapkan peluang bersyarat serta peristiwa saling bebas.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 2.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 2</div>
+        <h1>Peluang Bersyarat dan Peristiwa Saling Bebas</h1>
+        <p class="lede">Menghitung peluang terjadinya suatu peristiwa ketika informasi tambahan (syarat) diketahui, serta membedakan konsep peristiwa saling lepas dan peristiwa saling bebas.</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 2</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p2-bersyarat">
+        <h2 class="sec-title">1. Definisi Peluang Bersyarat</h2>
+        <p>Dalam banyak masalah statistik, kita ingin menghitung peluang terjadinya peristiwa $A$, dengan syarat peristiwa $B$ telah terjadi terlebih dahulu. Informasi terjadinya $B$ memperkecil ruang sampel dari $S$ menjadi $B$.</p>
+
+        <div class="box definisi" id="def-2-1">
+          <div class="box-head"><span class="tag">DEFINISI 2.1</span> Peluang Bersyarat</div>
+          <div class="box-body">
+            <p>Peluang bersyarat dari peristiwa $A$ dengan syarat peristiwa $B$ telah terjadi, dinotasikan $P(A|B)$, didefinisikan sebagai:</p>
+            $$ P(A|B) = \frac{P(A \cap B)}{P(B)}, \qquad \text{apabila } P(B) > 0 $$
+            <p>Secara intuitif, $P(A|B)$ menyatakan proporsi peluang irisan $A \cap B$ relatif terhadap seluruh peluang peristiwa $B$.</p>
+          </div>
+        </div>
+
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 2.1</span> Tabel Tenaga Kerja</div>
+          <div class="box-body">
+            <p>Suatu populasi 900 tenaga kerja dikelompokkan menurut jenis kelamin dan status pekerjaan sebagai berikut:</p>
+            <table>
+              <tr><th>Jenis Kelamin</th><th>Bekerja (E)</th><th>Menganggur (U)</th><th>Total</th></tr>
+              <tr><td>Pria (M)</td><td>460</td><td>40</td><td>500</td></tr>
+              <tr><td>Wanita (F)</td><td>140</td><td>260</td><td>400</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>600</strong></td><td><strong>300</strong></td><td><strong>900</strong></td></tr>
+            </table>
+            <p>Jika satu orang dipilih secara acak dan diketahui ia seorang <strong>Pria (M)</strong>, berapa peluang ia <strong>Bekerja (E)</strong>?</p>
+            <p><strong>Penyelesaian:</strong> Ruang sampel menyusut menjadi $M$ dengan $\#(M) = 500$. Dari kelompok pria tersebut, yang bekerja adalah $E \cap M$ sebanyak 460 orang. Maka:</p>
+            $$ P(E|M) = \frac{\#(E \cap M)}{\#(M)} = \frac{460}{500} = 0.92 $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p2-perkalian">
+        <h2 class="sec-title">2. Teorema Perkalian Peluang</h2>
+        <p>Dengan mengalikan kedua ruas pada Definisi 2.1 dengan $P(B)$, kita memperoleh aturan perkalian untuk menghitung peluang terjadinya dua peristiwa bersama-sama (irisan).</p>
+
+        <div class="box teorema" id="teo-2-1">
+          <div class="box-head"><span class="tag">TEOREMA 2.1</span> Hukum Perkalian Peluang</div>
+          <div class="box-body">
+            <p>Jika peristiwa $A$ dan $B$ dapat terjadi pada suatu eksperimen, maka peluang irisan $A \cap B$ adalah:</p>
+            $$ P(A \cap B) = P(B) P(A|B) = P(A) P(B|A) $$
+            <details class="proof">
+              <summary>Lihat bukti</summary>
+              <div class="proof-body">
+                <p>Dari Definisi 2.1, $P(A|B) = \frac{P(A \cap B)}{P(B)}$ untuk $P(B) > 0$. Kalikan kedua ruas dengan $P(B)$, diperoleh $P(A \cap B) = P(B) P(A|B)$. Dengan cara serupa, dari $P(B|A) = \frac{P(A \cap B)}{P(A)}$, diperoleh $P(A \cap B) = P(A) P(B|A)$.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="box teorema">
+          <div class="box-head"><span class="tag">TEOREMA 2.2</span> Perkalian Peluang untuk $k$ Peristiwa</div>
+          <div class="box-body">
+            <p>Jika $A_1, A_2, \dots, A_k$ adalah $k$ peristiwa, maka:</p>
+            $$ P(A_1 \cap A_2 \cap \dots \cap A_k) = P(A_1) P(A_2|A_1) P(A_3|A_1 \cap A_2) \dots P(A_k|A_1 \cap \dots \cap A_{k-1}) $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p2-saling-bebas">
+        <h2 class="sec-title">3. Peristiwa Saling Bebas (Independen)</h2>
+        <p>Dua peristiwa dikatakan <em>saling bebas</em> apabila terjadinya satu peristiwa tidak mempengaruhi peluang terjadinya peristiwa lain.</p>
+
+        <div class="box definisi" id="def-2-2">
+          <div class="box-head"><span class="tag">DEFINISI 2.2</span> Peristiwa Saling Bebas</div>
+          <div class="box-body">
+            <p>Dua peristiwa $A$ dan $B$ dikatakan <strong>saling bebas (stochastically independent)</strong> jika dan hanya jika:</p>
+            $$ P(A \cap B) = P(A) P(B) $$
+            <p>Jika $P(B) > 0$, syarat ini setara dengan $P(A|B) = P(A)$.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>PERBEDAAAN PENTING:</strong><br>
+          &bull; <strong>Saling Lepas (Mutually Exclusive):</strong> $A \cap B = \varnothing \implies P(A \cap B) = 0$. (Tidak mungkin terjadi bersama).<br>
+          &bull; <strong>Saling Bebas (Independent):</strong> $P(A \cap B) = P(A)P(B) > 0$. (Terjadinya satu tidak mengubah peluang yang lain).
+        </div>
+      </section>
+
+      <section id="p2-teorema-bebas">
+        <h2 class="sec-title">4. Teorema Sifat Independensi</h2>
+
+        <div class="box teorema" id="teo-2-3">
+          <div class="box-head"><span class="tag">TEOREMA 2.3</span> Independensi Komplemen</div>
+          <div class="box-body">
+            <p>Jika $A$ dan $B$ adalah dua peristiwa yang saling bebas, maka peristiwa $A$ dan $B^c$ juga saling bebas.</p>
+            <details class="proof">
+              <summary>Lihat bukti deduktif</summary>
+              <div class="proof-body">
+                <p>Perhatikan bahwa $A$ dapat dituliskan sebagai gabungan dua peristiwa yang saling lepas:</p>
+                $$ A = (A \cap B) \cup (A \cap B^c), \qquad (A \cap B) \cap (A \cap B^c) = \varnothing $$
+                <p>Berdasarkan Aksioma 2, $P(A) = P(A \cap B) + P(A \cap B^c)$. Karena $A$ dan $B$ saling bebas, $P(A \cap B) = P(A)P(B)$. Maka:</p>
+                $$ P(A \cap B^c) = P(A) - P(A \cap B) = P(A) - P(A)P(B) = P(A)(1 - P(B)) = P(A)P(B^c) $$
+                <p>Terbukti bahwa $A$ dan $B^c$ saling bebas.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="p2-contoh">
+        <h2 class="sec-title">5. Contoh Soal &amp; Aplikasi</h2>
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 2.2</span> Pengambilan Bola dari Dua Kantong</div>
+          <div class="box-body">
+            <p>Kantong I berisi 4 bola putih dan 3 bola hitam. Kantong II berisi 3 bola putih dan 5 bola hitam. Satu bola diambil acak dari Kantong I lalu dimasukkan ke Kantong II. Kemudian satu bola diambil dari Kantong II. Berapa peluang bola yang terambil dari Kantong II berwarna hitam?</p>
+            <p><strong>Penyelesaian:</strong> Misalkan $P_1$ = terambil bola putih dari Kantong I ($P(P_1) = 4/7$), $H_1$ = terambil bola hitam dari Kantong I ($P(H_1) = 3/7$).</p>
+            <p>&bull; Jika $P_1$ terjadi, Kantong II kini berisi 4 putih, 5 hitam (total 9). $P(H_2|P_1) = 5/9$.<br>
+            &bull; Jika $H_1$ terjadi, Kantong II kini berisi 3 putih, 6 hitam (total 9). $P(H_2|H_1) = 6/9$.</p>
+            <p>Dengan Teorema Peluang Total (Pertemuan 3) / Penjumlahan Irisan:</p>
+            $$ P(H_2) = P(P_1 \cap H_2) + P(H_1 \cap H_2) = P(P_1)P(H_2|P_1) + P(H_1)P(H_2|H_1) $$
+            $$ P(H_2) = \left(\frac{4}{7} \times \frac{5}{9}\right) + \left(\frac{3}{7} \times \frac{6}{9}\right) = \frac{20}{63} + \frac{18}{63} = \frac{38}{63} $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p2-latihan">
+        <h2 class="sec-title">6. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Dua kartu diambil berurutan tanpa pengembalian dari satu set kartu bridge (52 kartu). Berapa peluang kedua kartu yang terambil adalah Kartu As?</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">$A_1$ = As pertama ($P(A_1) = 4/52$), $A_2$ = As kedua ($P(A_2|A_1) = 3/51$). $P(A_1 \cap A_2) = \frac{4}{52} \times \frac{3}{51} = \frac{1}{13} \times \frac{1}{17} = \frac{1}{221}$.</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p2-glosarium">
+        <h2 class="sec-title">7. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">Peluang Bersyarat</span><span>$P(A|B) = \frac{P(A \cap B)}{P(B)}$, peluang $A$ jika $B$ telah terjadi.</span></div>
+          <div class="term"><span class="name">Saling Bebas</span><span>$P(A \cap B) = P(A)P(B)$, terjadinya satu peristiwa tidak mempengaruhi yang lain.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p3')">Lanjut ke Pertemuan 3: Hukum Peluang Total &amp; Teorema Bayes &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 3 ==================== -->
+<div id="p3" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 3</div>
+      <h2>Hukum Peluang Total &amp; Teorema Bayes</h2>
+      <ol>
+        <li><a href="#p3-partisi">Partisi Ruang Sampel</a></li>
+        <li><a href="#p3-total">Hukum Peluang Total</a></li>
+        <li><a href="#p3-bayes">Teorema Bayes</a></li>
+        <li><a href="#p3-prior-posterior">Prior &amp; Posterior Probability</a></li>
+        <li><a href="#p3-aplikasi">Aplikasi &amp; Studi Kasus</a></li>
+        <li><a href="#p3-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p3-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 1.3 &mdash; mampu menjelaskan dan menerapkan Teorema Bayes.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 2.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 3</div>
+        <h1>Hukum Peluang Total &amp; Teorema Bayes</h1>
+        <p class="lede">Membagi ruang sampel menjadi partisi yang saling lepas untuk menghitung peluang marjinal, serta merevisi peluang suatu sebab (prior) berdasarkan bukti empiris yang teramati (posterior).</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 2</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p3-partisi">
+        <h2 class="sec-title">1. Partisi Ruang Sampel</h2>
+        <div class="box definisi" id="def-3-1">
+          <div class="box-head"><span class="tag">DEFINISI 3.1</span> Partisi Ruang Sampel</div>
+          <div class="box-body">
+            <p>Sekumpulan peristiwa $B_1, B_2, \dots, B_k$ dikatakan membentuk suatu <strong>partisi</strong> dari ruang sampel $S$ apabila memenuhi dua syarat:</p>
+            <p>1. Saling lepas secara pasangan: $B_i \cap B_j = \varnothing$ untuk semua $i \ne j$; dan</p>
+            <p>2. Menutupi seluruh ruang sampel: $\bigcup_{i=1}^k B_i = S$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-total">
+        <h2 class="sec-title">2. Hukum Peluang Total</h2>
+        <div class="box teorema" id="teo-3-1">
+          <div class="box-head"><span class="tag">TEOREMA 3.1</span> Hukum Peluang Total</div>
+          <div class="box-body">
+            <p>Jika $B_1, B_2, \dots, B_k$ adalah partisi dari $S$ dengan $P(B_i) > 0$ untuk setiap $i = 1, \dots, k$, maka untuk sebarang peristiwa $A \subset S$ berlaku:</p>
+            $$ P(A) = \sum_{i=1}^k P(A \cap B_i) = \sum_{i=1}^k P(B_i) P(A|B_i) $$
+            <details class="proof">
+              <summary>Lihat bukti deduktif</summary>
+              <div class="proof-body">
+                <p>Karena $B_1, \dots, B_k$ mempartisi $S$, peristiwa $A$ dapat diuraikan sebagai gabungan irisan-irisan yang saling lepas:</p>
+                $$ A = A \cap S = A \cap \left( \bigcup_{i=1}^k B_i \right) = \bigcup_{i=1}^k (A \cap B_i) $$
+                <p>Karena $(A \cap B_i) \cap (A \cap B_j) = \varnothing$ untuk $i \ne j$, berdasar Aksioma 2:</p>
+                $$ P(A) = \sum_{i=1}^k P(A \cap B_i) $$
+                <p>Menggunakan Hukum Perkalian $P(A \cap B_i) = P(B_i)P(A|B_i)$, terbukti bahwa $P(A) = \sum_{i=1}^k P(B_i) P(A|B_i)$.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-bayes">
+        <h2 class="sec-title">3. Teorema Bayes</h2>
+        <div class="box teorema" id="teo-3-2">
+          <div class="box-head"><span class="tag">TEOREMA 3.2</span> Teorema Bayes</div>
+          <div class="box-body">
+            <p>Jika $B_1, B_2, \dots, B_k$ adalah partisi dari $S$ dan $A$ adalah peristiwa dengan $P(A) > 0$, maka peluang bersyarat $B_r$ (untuk suatu $r \in \{1,\dots,k\}$) dengan syarat $A$ telah terjadi adalah:</p>
+            $$ P(B_r | A) = \frac{P(B_r \cap A)}{P(A)} = \frac{P(B_r) P(A|B_r)}{\sum_{i=1}^k P(B_i) P(A|B_i)} $$
+            <details class="proof">
+              <summary>Lihat bukti deduktif</summary>
+              <div class="proof-body">
+                <p>Berdasarkan Definisi Peluang Bersyarat, $P(B_r|A) = \frac{P(B_r \cap A)}{P(A)}$. Pembilang $P(B_r \cap A) = P(B_r)P(A|B_r)$ berdasarkan Hukum Perkalian. Penyebut $P(A) = \sum_{i=1}^k P(B_i)P(A|B_i)$ berdasarkan Hukum Peluang Total (Teorema 3.1). Substitusi menghasilkan rumus Bayes di atas.</p>
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-prior-posterior">
+        <h2 class="sec-title">4. Peluang Prior dan Posterior</h2>
+        <p>&bull; <strong>Peluang Prior $P(B_r)$:</strong> Peluang awal hipotesis $B_r$ sebelum informasi $A$ diketahui.<br>
+        &bull; <strong>Likelihood $P(A|B_r)$:</strong> Peluang teramatinya bukti $A$ apabila hipotesis $B_r$ benar.<br>
+        &bull; <strong>Peluang Posterior $P(B_r|A)$:</strong> Peluang pembaharuan dari hipotesis $B_r$ setelah mengamati bukti $A$.</p>
+      </section>
+
+      <section id="p3-aplikasi">
+        <h2 class="sec-title">5. Contoh Aplikasi &amp; Studi Kasus</h2>
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 3.1</span> Pengujian Kualitas Pabrik</div>
+          <div class="box-body">
+            <p>Tiga mesin $B_1, B_2, B_3$ memproduksi masing-masing 30%, 45%, dan 25% dari total produksi pabrik. Persentase produk cacat yang dihasilkan masing-masing mesin adalah 2%, 3%, dan 2%. Satu produk diambil acak dan ternyata <strong>cacat (A)</strong>. Berapa peluang produk cacat tersebut berasal dari <strong>Mesin $B_3$</strong>?</p>
+            <p><strong>Penyelesaian:</strong><br>
+            Prior: $P(B_1) = 0.30, P(B_2) = 0.45, P(B_3) = 0.25$.<br>
+            Likelihood: $P(A|B_1) = 0.02, P(A|B_2) = 0.03, P(A|B_3) = 0.02$.</p>
+            <p>1. Hitung total peluang cacat $P(A)$ (Hukum Peluang Total):</p>
+            $$ P(A) = (0.30 \times 0.02) + (0.45 \times 0.03) + (0.25 \times 0.02) = 0.006 + 0.0135 + 0.005 = 0.0245 $$
+            <p>2. Hitung Peluang Posterior $P(B_3|A)$ (Teorema Bayes):</p>
+            $$ P(B_3|A) = \frac{P(B_3)P(A|B_3)}{P(A)} = \frac{0.25 \times 0.02}{0.0245} = \frac{0.0050}{0.0245} = \frac{10}{49} \approx 0.2041 \ (20.41\%) $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-latihan">
+        <h2 class="sec-title">6. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Suatu tes penyakit memiliki akurasi 95% (sensitivitas 0.95 dan spesifisitas 0.95). Jika 1% populasi menderita penyakit tersebut dan seseorang mendapat hasil tes positif, berapa peluang ia benar-benar sakit?</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">Prior $P(S) = 0.01, P(S^c) = 0.99$. Likelihood $P(+|S) = 0.95, P(+|S^c) = 0.05$. $P(+) = (0.01 \times 0.95) + (0.99 \times 0.05) = 0.0095 + 0.0495 = 0.0590$. $P(S|+) = \frac{0.0095}{0.0590} \approx 0.161$ (16.1%).</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p3-glosarium">
+        <h2 class="sec-title">7. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">Partisi</span><span>Kumpulan peristiwa saling lepas yang menutup ruang sampel $S$.</span></div>
+          <div class="term"><span class="name">Teorema Bayes</span><span>Formula pembaharuan peluang prior menjadi posterior berdasarkan bukti.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p4')">Lanjut ke Pertemuan 4: Peubah Acak &amp; Distribusi Peluang &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 4 ==================== -->
+<div id="p4" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 4</div>
+      <h2>Peubah Acak &amp; Distribusi Peluang</h2>
+      <ol>
+        <li><a href="#p4-definisi">Definisi Peubah Acak</a></li>
+        <li><a href="#p4-klasifikasi">Diskrit vs Kontinu</a></li>
+        <li><a href="#p4-ruang-hasil">Ruang Hasil (Support)</a></li>
+        <li><a href="#p4-aksioma">Aksioma Peubah Acak</a></li>
+        <li><a href="#p4-contoh">Contoh Pemetaan Ruang Sampel</a></li>
+        <li><a href="#p4-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p4-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 2.1 &mdash; mampu menjelaskan dan menyelesaikan masalah peubah acak beserta distribusinya.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 3.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 4</div>
+        <h1>Peubah Acak dan Distribusi Peluang</h1>
+        <p class="lede">Konsep kuantifikasi hasil eksperimen acak menjadi nilai numerik nyata pada garis bilangan real, beserta pengelompokan sifat diskrit dan kontinunya.</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 3</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p4-definisi">
+        <h2 class="sec-title">1. Definisi Peubah Acak</h2>
+        <div class="box definisi" id="def-4-1">
+          <div class="box-head"><span class="tag">DEFINISI 4.1</span> Peubah Acak (Random Variable)</div>
+          <div class="box-body">
+            <p>Peubah acak $X$ adalah suatu fungsi yang memetakan setiap elemen titik sampel $\omega$ dalam ruang sampel $S$ ke satu dan hanya satu bilangan real $X(\omega) \in \mathbb{R}$:</p>
+            $$ X: S \longrightarrow \mathbb{R} $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p4-klasifikasi">
+        <h2 class="sec-title">2. Klasifikasi: Diskrit vs Kontinu</h2>
+        <p>&bull; <strong>Peubah Acak Diskrit:</strong> Jika ruang hasil $R_X = \{x_1, x_2, \dots\}$ berhingga atau terhitung (countable). Contoh: jumlah cacat barang, banyak lemparan koin yang menghasilkan angka.<br>
+        &bull; <strong>Peubah Acak Kontinu:</strong> Jika ruang hasil $R_X$ berupa interval kontinu bilangan real (uncountable). Contoh: tinggi badan, suhu ruangan, masa hidup lampu.</p>
+      </section>
+
+      <section id="p4-ruang-hasil">
+        <h2 class="sec-title">3. Ruang Hasil (Support $R_X$)</h2>
+        <p>Himpunan semua nilai numerik $x$ yang dapat diambil oleh peubah acak $X$ disebut sebagai ruang hasil atau support dari $X$, dinotasikan $R_X$.</p>
+      </section>
+
+      <section id="p4-aksioma">
+        <h2 class="sec-title">4. Aksioma &amp; Sifat Peubah Acak</h2>
+        <div class="box definisi">
+          <div class="box-head"><span class="tag">AKSIOMA</span> Sifat Distribusi Peluang</div>
+          <div class="box-body">
+            <p>Untuk sebarang peubah acak $X$, peluang distribusi memenuhi:</p>
+            <p>1. $P(X = x) \ge 0$ untuk setiap $x \in R_X$.</p>
+            <p>2. $\sum_{x \in R_X} P(X = x) = 1$ (kasus diskrit) atau $\int_{R_X} f(x) dx = 1$ (kasus kontinu).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p4-contoh">
+        <h2 class="sec-title">5. Contoh Pemetaan Ruang Sampel</h2>
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 4.1</span> Lempar 3 Koin</div>
+          <div class="box-body">
+            <p>Eksperimen pelemparan 3 koin seimbang. Ruang sampelnya:</p>
+            $$ S = \{AAA, AAG, AGA, GAA, GGA, GAG, AGG, GGG\} $$
+            <p>Definisikan peubah acak $X = \text{banyaknya angka (A) yang muncul}$. Nilai yang dipetakan:</p>
+            <p>&bull; $X(GGG) = 0$<br>
+            &bull; $X(GGA) = X(GAG) = X(AGG) = 1$<br>
+            &bull; $X(AAG) = X(AGA) = X(GAA) = 2$<br>
+            &bull; $X(AAA) = 3$</p>
+            <p>Ruang hasil $R_X = \{0, 1, 2, 3\}$. Peluang masing-masing titik $P(X=x)$ adalah:</p>
+            <table>
+              <tr><th>$x$</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+              <tr><td>$P(X=x)$</td><td>1/8</td><td>3/8</td><td>3/8</td><td>1/8</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="p4-latihan">
+        <h2 class="sec-title">6. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Klasifikasikan peubah acak berikut sebagai diskrit atau kontinu:<br>
+          (a) $X$ = jumlah mobil yang lewat di depan gerbang kampus dalam 1 jam.<br>
+          (b) $Y$ = waktu tunggu bus kota dalam menit.<br>
+          (c) $Z$ = jumlah telur yang dihasilkan seekor ayam per bulan.</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">(a) Diskrit; (b) Kontinu; (c) Diskrit.</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p4-glosarium">
+        <h2 class="sec-title">7. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">Peubah Acak</span><span>Fungsi numerik dari ruang sampel $S$ ke garis bilangan real $\mathbb{R}$.</span></div>
+          <div class="term"><span class="name">Ruang Hasil ($R_X$)</span><span>Himpunan semua nilai numerik yang mungkin dihasilkan oleh peubah acak $X$.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p5')">Lanjut ke Pertemuan 5: Fungsi Kepadatan Peluang &amp; Kumulatif &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 5 ==================== -->
+<div id="p5" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 5</div>
+      <h2>FKP &amp; Fungsi Kumulatif (CDF)</h2>
+      <ol>
+        <li><a href="#p5-pmf">Fungsi Kepadatan Diskrit (PMF)</a></li>
+        <li><a href="#p5-pdf">Fungsi Kepadatan Kontinu (PDF)</a></li>
+        <li><a href="#p5-cdf">Fungsi Distribusi Kumulatif (CDF)</a></li>
+        <li><a href="#p5-sifat-cdf">Sifat-Sifat CDF</a></li>
+        <li><a href="#p5-hubungan">Hubungan PDF dan CDF Kontinu</a></li>
+        <li><a href="#p5-contoh">Contoh Soal &amp; Perhitungan Konstant</a></li>
+        <li><a href="#p5-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p5-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 2.2 &mdash; mampu menjelaskan dan menyelesaikan masalah fungsi kepadatan peluang dan fungsi kumulatif.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 3.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 5</div>
+        <h1>Fungsi Kepadatan Peluang &amp; Fungsi Kumulatif</h1>
+        <p class="lede">Merumuskan fungsi matematis pembobot peluang untuk peubah acak diskrit (PMF) dan kontinu (PDF), serta fungsi akumulasi kumulatifnya (CDF).</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 3</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p5-pmf">
+        <h2 class="sec-title">1. Fungsi Kepadatan Peluang Diskrit (PMF)</h2>
+        <div class="box definisi" id="def-5-1">
+          <div class="box-head"><span class="tag">DEFINISI 5.1</span> PMF Diskrit</div>
+          <div class="box-body">
+            <p>Himpunan pasangan terurut $(x, f(x))$ merupakan fungsi peluang / fungsi kepadatan peluang diskrit dari peubah acak diskrit $X$ jika memenuhi tiga syarat:</p>
+            <p>1. $f(x) \ge 0$ untuk semua $x \in R_X$;</p>
+            <p>2. $\sum_{x \in R_X} f(x) = 1$; dan</p>
+            <p>3. $P(X = x) = f(x)$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p5-pdf">
+        <h2 class="sec-title">2. Fungsi Kepadatan Peluang Kontinu (PDF)</h2>
+        <div class="box definisi" id="def-5-2">
+          <div class="box-head"><span class="tag">DEFINISI 5.2</span> PDF Kontinu</div>
+          <div class="box-body">
+            <p>Fungsi $f(x)$ disebut fungsi kepadatan peluang (PDF) untuk peubah acak kontinu $X$ pada garis real $\mathbb{R}$ jika memenuhi dua syarat:</p>
+            <p>1. $f(x) \ge 0$ untuk semua $x \in \mathbb{R}$; dan</p>
+            <p>2. $\int_{-\infty}^{\infty} f(x) \, dx = 1$.</p>
+            <p>Peluang $X$ berada dalam interval $[a, b]$ diberikan oleh integral:</p>
+            $$ P(a \le X \le b) = \int_a^b f(x) \, dx $$
+            <p><em>Catatan:</em> Untuk peubah acak kontinu, $P(X = a) = \int_a^a f(x)dx = 0$, sehingga $P(a \le X \le b) = P(a < X < b)$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p5-cdf">
+        <h2 class="sec-title">3. Fungsi Distribusi Kumulatif (CDF)</h2>
+        <div class="box definisi" id="def-5-3">
+          <div class="box-head"><span class="tag">DEFINISI 5.3</span> CDF (Cumulative Distribution Function)</div>
+          <div class="box-body">
+            <p>Fungsi distribusi kumulatif $F(x)$ dari peubah acak $X$ didefinisikan sebagai:</p>
+            $$ F(x) = P(X \le x), \qquad -\infty < x < \infty $$
+            <p>&bull; <strong>Diskrit:</strong> $F(x) = \sum_{t \le x} f(t)$ (Fungsi tangga/step function).<br>
+            &bull; <strong>Kontinu:</strong> $F(x) = \int_{-\infty}^x f(t) \, dt$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p5-sifat-cdf">
+        <h2 class="sec-title">4. Sifat-Sifat Fungsi Kumulatif (CDF)</h2>
+        <div class="box teorema">
+          <div class="box-head"><span class="tag">TEOREMA</span> Sifat Utama CDF</div>
+          <div class="box-body">
+            <p>Fungsi distribusi kumulatif $F(x)$ memiliki sifat-sifat dasar berikut:</p>
+            <p>1. Monoton tidak-turun: jika $x_1 < x_2$, maka $F(x_1) \le F(x_2)$.</p>
+            <p>2. Batas limit: $\lim_{x \to -\infty} F(x) = 0$ dan $\lim_{x \to \infty} F(x) = 1$.</p>
+            <p>3. Kontinu dari kanan: $\lim_{t \to x^+} F(t) = F(x)$.</p>
+            <p>4. $P(a < X \le b) = F(b) - F(a)$.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p5-hubungan">
+        <h2 class="sec-title">5. Hubungan PDF dan CDF Kontinu</h2>
+        <p>Berdasarkan Teorema Dasar Kalkulus, jika $F(x)$ kontinu dan terdiferensialkan, maka turunan dari CDF menghasilkan PDF:</p>
+        $$ f(x) = \frac{d}{dx} F(x) $$
+      </section>
+
+      <section id="p5-contoh">
+        <h2 class="sec-title">6. Contoh Soal Perhitungan</h2>
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 5.1</span> Mencari Konstanta PDF Kontinu</div>
+          <div class="box-body">
+            <p>Diketahui fungsi $f(x) = kx^2$ untuk $0 < x < 3$, dan $f(x) = 0$ untuk $x$ lainnya.</p>
+            <p>a) Tentukan nilai $k$ agar $f(x)$ menjadi PDF kontinu yang sah.<br>
+            b) Hitung $P(1 < X < 2)$.<br>
+            c) Tentukan fungsi kumulatif $F(x)$.</p>
+            <p><strong>Penyelesaian:</strong><br>
+            a) Syarat total peluang $= 1$:</p>
+            $$ \int_0^3 kx^2 \, dx = 1 \implies \left[ \frac{k}{3} x^3 \right]_0^3 = 9k = 1 \implies k = \frac{1}{9} $$
+            <p>b) Hitung peluang interval:</p>
+            $$ P(1 < X < 2) = \int_1^2 \frac{1}{9} x^2 \, dx = \left[ \frac{x^3}{27} \right]_1^2 = \frac{8}{27} - \frac{1}{27} = \frac{7}{27} $$
+            <p>c) Fungsi Kumulatif $F(x)$:</p>
+            $$ F(x) = \begin{cases} 0 & x < 0 \\ \int_0^x \frac{1}{9} t^2 \, dt = \frac{x^3}{27} & 0 \le x < 3 \\ 1 & x \ge 3 \end{cases} $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p5-latihan">
+        <h2 class="sec-title">7. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Diketahui PMF diskrit $f(x) = \frac{c}{x}$ untuk $x = 1, 2, 3, 4$. Tentukan nilai konstanta $c$.</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">$\sum f(x) = c \left(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4}\right) = c \left(\frac{25}{12}\right) = 1 \implies c = \frac{12}{25} = 0.48$.</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p5-glosarium">
+        <h2 class="sec-title">8. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">PMF / PDF</span><span>Probability Mass/Density Function, pembotot peluang titik/luas.</span></div>
+          <div class="term"><span class="name">CDF ($F(x)$)</span><span>Cumulative Distribution Function, akumulasi peluang $P(X \le x)$.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p6')">Lanjut ke Pertemuan 6: Ekspektasi Matematika &amp; Varians &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 6 ==================== -->
+<div id="p6" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 6</div>
+      <h2>Ekspektasi &amp; Varians</h2>
+      <ol>
+        <li><a href="#p6-ekspektasi">Ekspektasi Matematika E[X]</a></li>
+        <li><a href="#p6-fungsi">Ekspektasi Fungsi E[g(X)]</a></li>
+        <li><a href="#p6-linearitas">Sifat Linearitas Ekspektasi</a></li>
+        <li><a href="#p6-varians">Varians Var(X) &amp; Simpangan Baku</a></li>
+        <li><a href="#p6-teorema-var">Teorema Komputasi Varians</a></li>
+        <li><a href="#p6-contoh">Contoh Perhitungan Lengkap</a></li>
+        <li><a href="#p6-latihan">Latihan Terbimbing</a></li>
+        <li><a href="#p6-glosarium">Glosarium Istilah</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 2.3 &mdash; mampu menjelaskan dan menyelesaikan masalah harapan matematika, mean, varians, dan fungsi pembangkit momen.<br><br>
+        Rujukan: Walpole et al. (2011), Bab 4.
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 6</div>
+        <h1>Ekspektasi Matematika dan Varians Peubah Acak</h1>
+        <p class="lede">Menghitung nilai rata-rata tertimbang (harapan/mean) dan ukuran keragaman (varians &amp; simpangan baku) dari distribusi peluang peubah acak.</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 4</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p6-ekspektasi">
+        <h2 class="sec-title">1. Ekspektasi Matematika $E[X]$</h2>
+        <div class="box definisi" id="def-6-1">
+          <div class="box-head"><span class="tag">DEFINISI 6.1</span> Nilai Harapan / Mean ($\mu = E[X]$)</div>
+          <div class="box-body">
+            <p>Misalkan $X$ adalah peubah acak dengan distribusi peluang $f(x)$. Ekspektasi matematika (mean) dari $X$ didefinisikan sebagai:</p>
+            <p>&bull; <strong>Diskrit:</strong> $\mu = E[X] = \sum_{x} x f(x)$</p>
+            <p>&bull; <strong>Kontinu:</strong> $\mu = E[X] = \int_{-\infty}^{\infty} x f(x) \, dx$</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-fungsi">
+        <h2 class="sec-title">2. Ekspektasi Fungsi $E[g(X)]$</h2>
+        <div class="box teorema" id="teo-6-1">
+          <div class="box-head"><span class="tag">TEOREMA 6.1</span> Nilai Harapan $g(X)$</div>
+          <div class="box-body">
+            <p>Misalkan $X$ peubah acak dengan distribusi peluang $f(x)$. Ekspektasi dari fungsi $g(X)$ adalah:</p>
+            <p>&bull; <strong>Diskrit:</strong> $E[g(X)] = \sum_{x} g(x) f(x)$</p>
+            <p>&bull; <strong>Kontinu:</strong> $E[g(X)] = \int_{-\infty}^{\infty} g(x) f(x) \, dx$</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-linearitas">
+        <h2 class="sec-title">3. Sifat Linearitas Ekspektasi</h2>
+        <div class="box teorema" id="teo-6-2">
+          <div class="box-head"><span class="tag">TEOREMA 6.2</span> Linearitas Ekspektasi</div>
+          <div class="box-body">
+            <p>Jika $a, b$ adalah konstanta dan $g_1(X), g_2(X)$ adalah fungsi-fungsi dari $X$, maka:</p>
+            <p>1. $E[c] = c$</p>
+            <p>2. $E[aX + b] = a E[X] + b$</p>
+            <p>3. $E[g_1(X) + g_2(X)] = E[g_1(X)] + E[g_2(X)]$</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-varians">
+        <h2 class="sec-title">4. Varians $Var(X)$ &amp; Simpangan Baku</h2>
+        <div class="box definisi" id="def-6-2">
+          <div class="box-head"><span class="tag">DEFINISI 6.2</span> Varians ($\sigma^2 = Var(X)$)</div>
+          <div class="box-body">
+            <p>Misalkan $X$ peubah acak dengan mean $\mu = E[X]$. Varians dari $X$ didefinisikan sebagai ekspektasi dari kuadrat simpangan terhadap mean:</p>
+            $$ Var(X) = \sigma^2 = E[(X - \mu)^2] $$
+            <p>Akar kuadrat positif dari varians, $\sigma = \sqrt{Var(X)}$, disebut <strong>Simpangan Baku (Standard Deviation)</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-teorema-var">
+        <h2 class="sec-title">5. Teorema Komputasi Varians</h2>
+        <div class="box teorema" id="teo-6-3">
+          <div class="box-head"><span class="tag">TEOREMA 6.3</span> Rumus Komputasi Varians</div>
+          <div class="box-body">
+            <p>Varians dari peubah acak $X$ dapat dihitung secara praktis menggunakan formula:</p>
+            $$ Var(X) = \sigma^2 = E[X^2] - (E[X])^2 $$
+            <details class="proof">
+              <summary>Lihat bukti deduktif</summary>
+              <div class="proof-body">
+                <p>Jabarkan bentuk kuadrat dalam definisi varians:</p>
+                $$ Var(X) = E[(X - \mu)^2] = E[X^2 - 2\mu X + \mu^2] $$
+                <p>Gunakan sifat linearitas ekspektasi (Teorema 6.2):</p>
+                $$ Var(X) = E[X^2] - E[2\mu X] + E[\mu^2] = E[X^2] - 2\mu E[X] + \mu^2 $$
+                <p>Karena $\mu = E[X]$, substitusi menghasilkan:</p>
+                $$ Var(X) = E[X^2] - 2\mu(\mu) + \mu^2 = E[X^2] - 2\mu^2 + \mu^2 = E[X^2] - \mu^2 = E[X^2] - (E[X])^2 $$
+                <p class="qed">&#9633;</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="box teorema">
+          <div class="box-head"><span class="tag">TEOREMA 6.4</span> Sifat-Sifat Varians</div>
+          <div class="box-body">
+            <p>Jika $a, b$ adalah konstanta:</p>
+            <p>1. $Var(c) = 0$</p>
+            <p>2. $Var(aX + b) = a^2 Var(X)$</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-contoh">
+        <h2 class="sec-title">6. Contoh Perhitungan Lengkap</h2>
+        <div class="box contoh">
+          <div class="box-head"><span class="tag">CONTOH 6.1</span> Ekspektasi &amp; Varians Peubah Acak Kontinu</div>
+          <div class="box-body">
+            <p>Masa hidup (dalam ratusan jam) suatu komponen elektronik memiliki PDF $f(x) = \frac{20000}{x^3}$ untuk $x > 100$, dan $f(x) = 0$ untuk $x \le 100$. Hitung nilai harapan hidup komponen tersebut.</p>
+            <p><strong>Penyelesaian:</strong></p>
+            $$ E[X] = \int_{100}^{\infty} x \left( \frac{20000}{x^3} \right) dx = \int_{100}^{\infty} \frac{20000}{x^2} dx = \left[ -\frac{20000}{x} \right]_{100}^{\infty} = 0 - (-200) = 200 \text{ jam} $$
+          </div>
+        </div>
+      </section>
+
+      <section id="p6-latihan">
+        <h2 class="sec-title">7. Latihan Terbimbing</h2>
+        <div class="quiz">
+          <div class="qnum">Soal 1</div>
+          <p>Jika $E[X] = 3$ dan $E[X^2] = 13$, hitung $Var(X)$ dan $Var(2X + 5)$.</p>
+          <details>
+            <summary>Tampilkan jawaban</summary>
+            <div class="ans">$Var(X) = E[X^2] - (E[X])^2 = 13 - 3^2 = 13 - 9 = 4$. $Var(2X + 5) = 2^2 Var(X) = 4 \times 4 = 16$.</div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p6-glosarium">
+        <h2 class="sec-title">8. Glosarium Istilah</h2>
+        <div class="glossary-grid">
+          <div class="term"><span class="name">Ekspektasi ($E[X]$)</span><span>Rata-rata tertimbang nilai peubah acak berdasar peluangnya.</span></div>
+          <div class="term"><span class="name">Varians ($Var(X)$)</span><span>Ukuran keragaman $E[(X-\mu)^2] = E[X^2] - (E[X])^2$.</span></div>
+        </div>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+        <div class="nav-link-btn" onclick="switchTab('p7')">Lanjut ke Pertemuan 7: Review &amp; Latihan Komprehensif UTS &rarr;</div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ==================== TAB PERTEMUAN 7 ==================== -->
+<div id="p7" class="tab-pane">
+  <div class="layout">
+    <nav class="toc">
+      <div class="kicker">PMA4119 &middot; MINGGU 7</div>
+      <h2>Review &amp; Integrasi UTS</h2>
+      <ol>
+        <li><a href="#p7-peta">Peta Konsep &amp; Matriks Rumus</a></li>
+        <li><a href="#p7-rangkuman">Rangkuman Materi Pertemuan 1–6</a></li>
+        <li><a href="#p7-paket-soal">Paket Soal Latihan UTS</a></li>
+        <li><a href="#p7-pembahasan">Kunci &amp; Pembahasan Terperinci</a></li>
+      </ol>
+      <div class="toc-foot">
+        Sub-CPMK 2.4 &mdash; mampu mengintegrasikan konsep peluang dan peubah acak (Minggu 1-6) secara komprehensif.<br><br>
+        Persiapan Evaluasi Tengah Semester (UTS).
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 7</div>
+        <h1>Review &amp; Integrasi Konsep Peluang dan Peubah Acak</h1>
+        <p class="lede">Modul pengayaan dan evaluasi komprehensif untuk menguji pemahaman teori peluang, peluang bersyarat, Teorema Bayes, peubah acak, PDF, CDF, ekspektasi, dan varians.</p>
+        <div class="meta-row">
+          <div><span>PENGAMPU &amp; PENGEMBANG</span>Gusti Uripno, M.Pd.</div>
+          <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+          <div><span>EVALUASI</span>Persiapan UTS (Minggu 8)</div>
+          <div><span>DURASI</span>100 menit (2 SKS)</div>
+        </div>
+      </header>
+
+      <section id="p7-peta">
+        <h2 class="sec-title">1. Peta Konsep &amp; Matriks Rumus Utama</h2>
+        <table>
+          <tr><th>Materi / Topik</th><th>Rumus / Definisi Kunci</th><th>Syarat / Catatan Utama</th></tr>
+          <tr><td>Peluang Klasik</td><td>$P(A) = \frac{\#(A)}{\#(S)}$</td><td>Titik sampel diskrit berpeluang sama</td></tr>
+          <tr><td>Peluang Bersyarat</td><td>$P(A|B) = \frac{P(A \cap B)}{P(B)}$</td><td>$P(B) > 0$, menyusutkan ruang sampel ke $B$</td></tr>
+          <tr><td>Teorema Bayes</td><td>$P(B_r|A) = \frac{P(B_r)P(A|B_r)}{\sum P(B_i)P(A|B_i)}$</td><td>$B_1,\dots,B_k$ mempartisi ruang sampel $S$</td></tr>
+          <tr><td>PDF Kontinu</td><td>$\int_{-\infty}^{\infty} f(x) dx = 1$</td><td>$f(x) \ge 0$, $P(a \le X \le b) = \int_a^b f(x)dx$</td></tr>
+          <tr><td>CDF ($F(x)$)</td><td>$F(x) = P(X \le x)$</td><td>$f(x) = F'(x)$ pada kasus kontinu</td></tr>
+          <tr><td>Ekspektasi $E[X]$</td><td>$\sum x f(x)$ atau $\int x f(x) dx$</td><td>Linearitas: $E[aX+b] = aE[X]+b$</td></tr>
+          <tr><td>Varians $Var(X)$</td><td>$E[X^2] - (E[X])^2$</td><td>$Var(aX+b) = a^2 Var(X)$</td></tr>
+        </table>
+      </section>
+
+      <section id="p7-rangkuman">
+        <h2 class="sec-title">2. Rangkuman Integratif Pertemuan 1–6</h2>
+        <p>Modul Statistika Matematika I menghubungkan konsep peluang klasik hingga distribusi peubah acak:</p>
+        <p>1. <strong>Landasan Peluang (P1–P3):</strong> Diawali dari eksperimen acak $\mathcal{E}$ dan ruang sampel $S$, peluang didefinisikan secara aksiomatik. Konsep diperluas ke Peluang Bersyarat $P(A|B)$ dan Hukum Peluang Total untuk menghitung peluang pembaharuan Posterior lewat Teorema Bayes.</p>
+        <p>2. <strong>Peubah Acak &amp; Distribusi (P4–P6):</strong> Hasil eksperimen dikuantifikasi menjadi peubah acak $X$. Karakternya ditentukan oleh PMF/PDF $f(x)$ dan CDF $F(x)$, serta dirangkum oleh ukuran pemusatan $E[X]$ dan penyebaran $Var(X)$.</p>
+      </section>
+
+      <section id="p7-paket-soal">
+        <h2 class="sec-title">3. Paket Soal Latihan UTS Komprehensif</h2>
+
+        <div class="quiz">
+          <div class="qnum">Soal 1 &mdash; Peluang Bersyarat &amp; Bayes</div>
+          <p>Sebuah pabrik menggunakan dua mesin $M_1$ dan $M_2$ yang memproduksi berturut-turut 60% dan 40% produk. Tingkat kerusakan $M_1$ adalah 1% dan $M_2$ adalah 3%. Satu produk diambil acak dan ternyata rusak. Berapa peluang produk rusak tersebut dibuat oleh mesin $M_1$?</p>
+          <details>
+            <summary>Tampilkan kunci jawaban</summary>
+            <div class="ans">
+              $P(M_1) = 0.60, P(M_2) = 0.40$. Likelihood: $P(R|M_1) = 0.01, P(R|M_2) = 0.03$.<br>
+              Total rusak: $P(R) = (0.60 \times 0.01) + (0.40 \times 0.03) = 0.006 + 0.012 = 0.018$.<br>
+              Bayes: $P(M_1|R) = \frac{0.006}{0.018} = \frac{1}{3} \approx 33.33\%$.
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz">
+          <div class="qnum">Soal 2 &mdash; PDF, CDF, Ekspektasi &amp; Varians Kontinu</div>
+          <p>Peubah acak kontinu $X$ memiliki PDF $f(x) = c x(2-x)$ untuk $0 < x < 2$, dan $f(x) = 0$ untuk $x$ lainnya.<br>
+          (a) Cari nilai $c$.<br>
+          (b) Hitung $E[X]$.<br>
+          (c) Hitung $Var(X)$.</p>
+          <details>
+            <summary>Tampilkan kunci jawaban</summary>
+            <div class="ans">
+              (a) $\int_0^2 c(2x - x^2) dx = c \left[ x^2 - \frac{x^3}{3} \right]_0^2 = c \left( 4 - \frac{8}{3} \right) = \frac{4}{3} c = 1 \implies c = \frac{3}{4}$.<br>
+              (b) $E[X] = \frac{3}{4} \int_0^2 (2x^2 - x^3) dx = \frac{3}{4} \left[ \frac{2x^3}{3} - \frac{x^4}{4} \right]_0^2 = \frac{3}{4} \left( \frac{16}{3} - 4 \right) = \frac{3}{4} \left( \frac{4}{3} \right) = 1$.<br>
+              (c) $E[X^2] = \frac{3}{4} \int_0^2 (2x^3 - x^4) dx = \frac{3}{4} \left[ \frac{x^4}{2} - \frac{x^5}{5} \right]_0^2 = \frac{3}{4} \left( 8 - \frac{32}{5} \right) = \frac{3}{4} \left( \frac{8}{5} \right) = \frac{6}{5} = 1.2$.<br>
+              $Var(X) = E[X^2] - (E[X])^2 = 1.2 - 1^2 = 0.2$.
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="p7-pembahasan">
+        <h2 class="sec-title">4. Kunci &amp; Pembahasan Terperinci</h2>
+        <p>Pembahasan lengkap mengenai seluruh soal pada latihan komprehensif di atas dapat dipelajari melalui kotak kunci jawaban interaktif di atas.</p>
+      </section>
+
+      <footer class="pagefoot">
+        Statistika Matematika I (PMA4119) &middot; Pengampu &amp; Pengembang: Gusti Uripno, M.Pd. &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  function switchTab(tabId, scrollToTop = true) {
+    // Resolve main tab ID ('p1'..'p7')
+    let mainTabId = tabId;
+    if (!['p1','p2','p3','p4','p5','p6','p7'].includes(mainTabId)) {
+      const el = document.getElementById(tabId);
+      if (el) {
+        const pane = el.closest('.tab-pane');
+        if (pane) {
+          mainTabId = pane.id;
+        }
+      }
+    }
+
+    if (!['p1','p2','p3','p4','p5','p6','p7'].includes(mainTabId)) {
+      mainTabId = 'p1';
+    }
+
+    // Hide all tab panes
+    const panes = document.querySelectorAll('.tab-pane');
+    panes.forEach(pane => pane.classList.remove('active'));
+
+    // Deactivate all tab buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Show target tab pane
+    const targetPane = document.getElementById(mainTabId);
+    if (targetPane) {
+      targetPane.classList.add('active');
+    }
+
+    // Highlight active tab button
+    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(mainTabId));
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+
+    // Scroll to top of window if explicitly requested
+    if (scrollToTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Typeset MathJax if available
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  // Intercept clicks on all TOC and anchor links (#...)
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a');
+    if (!anchor) return;
+    const href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const targetId = href.replace('#', '');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        // Switch to corresponding tab without resetting scroll
+        switchTab(targetId, false);
+        // Scroll smoothly to target section
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, null, href);
+      }
+    }
+  });
+
+  // Handle direct URL hash on page load (e.g. #p2 or #p2-bersyarat)
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+      const targetEl = document.getElementById(hash);
+      switchTab(hash, false);
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  // Handle back/forward browser navigation
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+      const targetEl = document.getElementById(hash);
+      switchTab(hash, false);
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      switchTab('p1', true);
+    }
+  });
+</script>
+
 </body>
 </html>

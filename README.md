@@ -8,12 +8,10 @@ Repositori resmi materi perkuliahan, modul pembelajaran interaktif (Pertemuan 1�
 
 ---
 
-## 🌐 Link Akses Modul Interaktif (GitHub Pages)
+## 🌐 Modul Pembelajaran Interaktif (GitHub Pages)
 
-Klik tautan di bawah ini untuk langsung membuka modul web interaktif multi-tab di browser Anda:
-👉 **[Buka Modul Interaktif Statistika Matematika I](https://gustidash-cell.github.io/statistika-matematika-1/Statistika-Matematika-I-Modul-Lengkap.html?v=2)**
-
-*(Atau via URL Root: https://gustidash-cell.github.io/statistika-matematika-1/?v=2)*
+Klik tautan resmi di bawah ini untuk membuka modul web interaktif multi-tab secara langsung:
+👉 **[BUKA MODUL INTERAKTIF STATISTIKA MATEMATIKA I](https://gustidash-cell.github.io/statistika-matematika-1/)**
 
 ---
 
@@ -43,7 +41,7 @@ Modul ini disusun berdasarkan **RPS Berbasis OBE 2026** dan rujukan utama **Walp
 
 ---
 
-## 💻 Fitur Modul Web HTML (`Statistika-Matematika-I-Modul-Lengkap.html`)
+## 💻 Fitur Modul Web HTML (`index.html`)
 
 - 🎯 **Navigasi Tab Interaktif**: Beralih antar pertemuan (P1–P7) tanpa mereload halaman.
 - 📐 **Format Rumus Presisi (MathJax 3)**: Semua persamaan dan simbol matematika diproses secara dinamis.
@@ -60,4 +58,4 @@ Untuk membuka modul di komputer lokal tanpa koneksi internet:
    ```bash
    git clone https://github.com/gustidash-cell/statistika-matematika-1.git
    ```
-2. Buka file `Statistika-Matematika-I-Modul-Lengkap.html` menggunakan browser favorit Anda (Chrome, Edge, Firefox).
+2. Buka file `index.html` atau `Statistika-Matematika-I-Modul-Lengkap.html` menggunakan browser favorit Anda.
