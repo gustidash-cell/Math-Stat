@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pertemuan 1 — Konsep Dasar Peluang | Statistika Matematika I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+  :root{
+    --paper: #faf8f3;
+    --paper-deep: #f1ede3;
+    --ink: #1c2b3a;
+    --ink-soft: #46586b;
+    --navy: #1c2b3a;
+    --teal: #2c6b5c;
+    --teal-soft: #e4efe9;
+    --ochre: #a5762f;
+    --ochre-soft: #f4e9d6;
+    --rule: #d8d0bf;
+    --max-w: 44rem;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  a{ color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover{ color: var(--ochre); }
+
+  .layout{
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    max-width: 78rem;
+    margin: 0 auto;
+  }
+
+  /* ---------- Sidebar ---------- */
+  nav.toc{
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2.5rem 1.5rem 2rem 1.75rem;
+    border-right: 1px solid var(--rule);
+    font-family: 'Source Serif 4', serif;
+  }
+  nav.toc .kicker{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--ochre);
+    margin-bottom: 0.35rem;
+  }
+  nav.toc h2{
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.3;
+  }
+  nav.toc ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: sec;
+  }
+  nav.toc li{
+    counter-increment: sec;
+    margin-bottom: 0.15rem;
+  }
+  nav.toc a{
+    display: flex;
+    gap: 0.5rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding: 0.28rem 0.4rem;
+    border-radius: 3px;
+  }
+  nav.toc a::before{
+    content: counter(sec, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ochre);
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+  nav.toc a:hover{ background: var(--paper-deep); color: var(--ink); }
+
+  .toc-foot{
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ---------- Main ---------- */
+  main{ padding: 0 2rem; }
+
+  header.hero{
+    max-width: var(--max-w);
+    margin: 3.5rem auto 2.5rem auto;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--teal);
+    margin-bottom: 0.9rem;
+  }
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 2.6rem;
+    line-height: 1.12;
+    margin: 0 0 1rem 0;
+    color: var(--navy);
+  }
+  .hero p.lede{
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 38rem;
+    margin: 0 0 1.4rem 0;
+  }
+  .meta-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+  .meta-row div span{
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ochre);
+    margin-bottom: 0.15rem;
+  }
+
+  section{
+    max-width: var(--max-w);
+    margin: 0 auto 3.2rem auto;
+    scroll-margin-top: 1.5rem;
+  }
+
+  h2.sec-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.65rem;
+    color: var(--navy);
+    margin: 0 0 1.1rem 0;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  h3.sub-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.18rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem 0;
+  }
+
+  p{ margin: 0 0 1rem 0; }
+
+  .callout{
+    background: var(--teal-soft);
+    border-left: 3px solid var(--teal);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  /* ---------- Definition / Theorem boxes ---------- */
+  .box{
+    margin: 1.4rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .box-head{
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.65rem 1.1rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .box-body{ padding: 0.2rem 1.1rem 1.1rem 1.1rem; }
+  .box-body p:last-child{ margin-bottom: 0; }
+
+  .box.definisi{ border-left: 4px solid var(--teal); }
+  .box.definisi .box-head{ background: var(--teal-soft); color: var(--teal); }
+
+  .box.teorema{ border-left: 4px solid var(--ochre); }
+  .box.teorema .box-head{ background: var(--ochre-soft); color: var(--ochre); }
+
+  .box.contoh{ border-left: 4px solid var(--ink-soft); }
+  .box.contoh .box-head{ background: var(--paper-deep); color: var(--ink-soft); }
+
+  .box .tag{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0.75;
+  }
+
+  details.proof{
+    margin-top: 0.8rem;
+    border-top: 1px dashed var(--rule);
+    padding-top: 0.7rem;
+  }
+  details.proof summary{
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ochre);
+    list-style: none;
+  }
+  details.proof summary::-webkit-details-marker{ display: none; }
+  details.proof summary::before{
+    content: "▸ ";
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+  details.proof[open] summary::before{ transform: rotate(90deg); }
+  details.proof .proof-body{
+    margin-top: 0.6rem;
+    padding-left: 0.2rem;
+    font-size: 0.95rem;
+  }
+  details.proof .proof-body p:last-child{ margin-bottom: 0; }
+  .qed{ text-align: right; font-family: 'JetBrains Mono', monospace; }
+
+  table{
+    border-collapse: collapse;
+    margin: 1rem auto;
+    font-size: 0.92rem;
+  }
+  th, td{
+    border: 1px solid var(--rule);
+    padding: 0.4rem 0.75rem;
+    text-align: center;
+  }
+  th{ background: var(--paper-deep); font-weight: 600; }
+
+  /* Venn diagrams */
+  .venn-row{
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1.3rem 0;
+  }
+  .venn{ text-align: center; font-size: 0.82rem; color: var(--ink-soft); }
+  .venn svg{ display: block; margin: 0 auto 0.3rem auto; }
+
+  /* Practice problems */
+  .quiz{
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+    background: #fff;
+  }
+  .quiz .qnum{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ochre);
+    font-size: 0.78rem;
+    margin-bottom: 0.3rem;
+  }
+  .quiz details summary{
+    cursor: pointer;
+    color: var(--teal);
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+  }
+  .quiz .ans{
+    margin-top: 0.5rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--paper-deep);
+    font-size: 0.92rem;
+    border-radius: 2px;
+  }
+
+  .glossary-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .glossary-grid .term{
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.93rem;
+    align-items: baseline;
+  }
+  .glossary-grid .term .name{
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .glossary-grid .term .notation{
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--teal);
+  }
+
+  footer.pagefoot{
+    max-width: var(--max-w);
+    margin: 0 auto 4rem auto;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .nav-link-btn{
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal);
+  }
+
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; }
+    nav.toc{
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 1.25rem;
+    }
+    main{ padding: 0 1.25rem; }
+    .hero h1{ font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <nav class="toc">
+    <div class="kicker">PMA4119 &middot; MINGGU 1</div>
+    <h2>Konsep Dasar Peluang</h2>
+    <ol>
+      <li><a href="#eksperimen">Eksperimen &amp; Ruang Sampel</a></li>
+      <li><a href="#peristiwa">Peristiwa &amp; Operasi Himpunan</a></li>
+      <li><a href="#bernoulli">Percobaan Bernoulli</a></li>
+      <li><a href="#membilang">Teknik Membilang</a></li>
+      <li><a href="#peluang-klasik">Peluang Klasik</a></li>
+      <li><a href="#aksioma">Aksioma Peluang</a></li>
+      <li><a href="#teorema">Teorema Turunan</a></li>
+      <li><a href="#latihan">Latihan Terbimbing</a></li>
+      <li><a href="#glosarium">Glosarium Istilah</a></li>
+    </ol>
+    <div class="toc-foot">
+      Sub-CPMK 1.1 &mdash; mampu menjelaskan dan menerapkan prinsip dasar peluang.<br><br>
+      Rujukan: Walpole, Myers, Myers &amp; Ye (2011), Bab 2.
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="eyebrow">Statistika Matematika I &mdash; Pertemuan 1</div>
+      <h1>Konsep Dasar Peluang</h1>
+      <p class="lede">Dari eksperimen dan ruang sampel, sampai ke aksioma peluang dan teorema-teorema turunannya beserta buktinya. Istilah dan notasi dijaga konsisten di seluruh modul ini.</p>
+      <div class="meta-row">
+        <div><span>PROGRAM STUDI</span>Pendidikan Matematika, UNIROW Tuban</div>
+        <div><span>RUJUKAN</span>Walpole dkk. (2011), Bab 2</div>
+        <div><span>DURASI</span>90 menit</div>
+      </div>
+    </header>
+
+    <section id="eksperimen">
+      <h2 class="sec-title">1. Eksperimen, Titik Sampel, dan Ruang Sampel</h2>
+      <p>Titik tolak teori peluang adalah gagasan tentang <em>eksperimen</em>: sesuatu yang kita amati atau lakukan, yang hasilnya tidak dapat dipastikan sebelumnya.</p>
+
+      <div class="box definisi" id="def-1-1">
+        <div class="box-head"><span class="tag">DEFINISI 1.1</span> Eksperimen</div>
+        <div class="box-body">
+          <p>Eksperimen adalah suatu proses atau percobaan yang darinya suatu gejala atau pengukuran diamati, dan hasilnya tidak dapat diprediksi secara pasti sebelum eksperimen dilakukan.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.1</span></div>
+        <div class="box-body">
+          <p>Beberapa contoh eksperimen: (i) melempar sebuah uang logam satu kali atau dua kali; (ii) melempar sebuah dadu satu kali atau dua kali; (iii) menyusun bilangan dua digit dari angka $\{0,1,2,3\}$.</p>
+        </div>
+      </div>
+
+      <div class="box definisi" id="def-1-2">
+        <div class="box-head"><span class="tag">DEFINISI 1.2</span> Titik Sampel</div>
+        <div class="box-body">
+          <p>Titik sampel adalah suatu hasil dari eksperimen yang tidak dapat diuraikan lagi menjadi hasil yang lebih sederhana. Titik sampel dilambangkan dengan $E_i$, $i = 1, 2, 3, \dots$</p>
+        </div>
+      </div>
+
+      <div class="box definisi" id="def-1-3">
+        <div class="box-head"><span class="tag">DEFINISI 1.3</span> Ruang Sampel</div>
+        <div class="box-body">
+          <p>Ruang sampel adalah himpunan semua titik sampel yang mungkin terjadi dari suatu eksperimen, yaitu himpunan semua hasil yang mungkin. Ruang sampel dilambangkan dengan $S$.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.2</span></div>
+        <div class="box-body">
+          <p><strong>Melempar uang logam satu kali.</strong> Misalkan muka angka $= A$ dan muka gambar $= G$. Ruang sampelnya adalah $S = \{A, G\}$.</p>
+          <p><strong>Melempar uang logam dua kali</strong> (atau dua uang logam dilempar bersama-sama). Ruang sampelnya adalah himpunan pasangan berurut $S = \{AA, AG, GA, GG\}$, sehingga $S$ memiliki empat titik sampel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="peristiwa">
+      <h2 class="sec-title">2. Peristiwa dan Operasi Himpunan</h2>
+      <p>Dari suatu eksperimen, kita biasanya tertarik pada bagian tertentu dari ruang sampel &mdash; inilah yang disebut peristiwa. Karena peristiwa adalah himpunan, semua operasi himpunan (gabungan, irisan, komplemen) berlaku padanya.</p>
+
+      <div class="box definisi" id="def-1-4">
+        <div class="box-head"><span class="tag">DEFINISI 1.4</span> Peristiwa</div>
+        <div class="box-body">
+          <p>Peristiwa adalah bagian dari ruang sampel yang menjadi pusat perhatian kita. Peristiwa merupakan himpunan bagian (subset) dari ruang sampel $S$, dan dilambangkan dengan huruf kapital, misalnya $A, B$.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.3</span></div>
+        <div class="box-body">
+          <p>Pada eksperimen pelemparan dua dadu, beberapa peristiwa yang dapat diamati di antaranya:</p>
+          <p>&bull; <strong>Mata pertama prima.</strong> Bilangan prima antara 1 dan 6 adalah 2, 3, dan 5, sehingga peristiwanya adalah $A = \{(x,y) \mid x = 2,3,5;\ y = 1,2,3,4,5,6\}$.</p>
+          <p>&bull; <strong>Jumlah mata merupakan bilangan kuadrat.</strong> Jumlah mata yang mungkin adalah $2, 3, \dots, 12$; yang merupakan kuadrat sempurna adalah 4 dan 9. Peristiwanya adalah $B = \{(2,2),(3,1),(1,3),(5,4),(4,5),(3,6),(6,3)\}$.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-title">Operasi pada Peristiwa</h3>
+      <p>Karena peristiwa adalah himpunan bagian dari $S$, tiga operasi berikut digunakan untuk membentuk peristiwa baru dari peristiwa yang sudah ada.</p>
+
+      <div class="venn-row">
+        <div class="venn">
+          <svg width="130" height="110" viewBox="0 0 130 110">
+            <circle cx="50" cy="50" r="38" fill="#2c6b5c" fill-opacity="0.25" stroke="#2c6b5c" stroke-width="1.5"/>
+            <circle cx="80" cy="50" r="38" fill="#a5762f" fill-opacity="0.25" stroke="#a5762f" stroke-width="1.5"/>
+            <text x="30" y="55" font-size="13" fill="#1c2b3a">A</text>
+            <text x="95" y="55" font-size="13" fill="#1c2b3a">B</text>
+          </svg>
+          <strong>Gabungan</strong> $A \cup B$<br>terjadi $A$ atau $B$
+        </div>
+        <div class="venn">
+          <svg width="130" height="110" viewBox="0 0 130 110">
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#2c6b5c" stroke-width="1.5"/>
+            <circle cx="80" cy="50" r="38" fill="none" stroke="#a5762f" stroke-width="1.5"/>
+            <clipPath id="clip1"><circle cx="50" cy="50" r="38"/></clipPath>
+            <circle cx="80" cy="50" r="38" fill="#46586b" fill-opacity="0.35" clip-path="url(#clip1)"/>
+            <text x="30" y="55" font-size="13" fill="#1c2b3a">A</text>
+            <text x="95" y="55" font-size="13" fill="#1c2b3a">B</text>
+          </svg>
+          <strong>Irisan</strong> $A \cap B$<br>terjadi $A$ dan $B$
+        </div>
+        <div class="venn">
+          <svg width="130" height="110" viewBox="0 0 130 110">
+            <rect x="5" y="5" width="120" height="100" fill="#f4e9d6" stroke="#a5762f" stroke-width="1.5"/>
+            <circle cx="65" cy="55" r="35" fill="#faf8f3" stroke="#2c6b5c" stroke-width="1.5"/>
+            <text x="55" y="60" font-size="13" fill="#1c2b3a">A</text>
+            <text x="12" y="20" font-size="12" fill="#a5762f">$A^c$</text>
+          </svg>
+          <strong>Komplemen</strong> $A^c$<br>tidak terjadi $A$
+        </div>
+        <div class="venn">
+          <svg width="130" height="110" viewBox="0 0 130 110">
+            <circle cx="42" cy="50" r="30" fill="#2c6b5c" fill-opacity="0.25" stroke="#2c6b5c" stroke-width="1.5"/>
+            <circle cx="90" cy="50" r="30" fill="#a5762f" fill-opacity="0.25" stroke="#a5762f" stroke-width="1.5"/>
+            <text x="30" y="55" font-size="13" fill="#1c2b3a">A</text>
+            <text x="100" y="55" font-size="13" fill="#1c2b3a">B</text>
+          </svg>
+          <strong>Saling lepas</strong> $A \cap B = \varnothing$<br>tak mungkin terjadi bersama
+        </div>
+      </div>
+
+      <div class="box definisi" id="def-1-5">
+        <div class="box-head"><span class="tag">DEFINISI 1.5</span> Peristiwa Saling Lepas</div>
+        <div class="box-body">
+          <p>Dua peristiwa $A$ dan $B$ dikatakan <em>saling lepas</em> (mutually exclusive) apabila $A$ tidak mungkin terjadi bersama-sama dengan $B$, yaitu $A \cap B = \varnothing$.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.4</span></div>
+        <div class="box-body">
+          <p>Pada pelemparan sebuah dadu sekali, peristiwa munculnya mata genap $A = \{2,4,6\}$ dan peristiwa munculnya mata ganjil $B = \{1,3,5\}$ adalah dua peristiwa yang saling lepas, karena $A \cap B = \varnothing$.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Catatan istilah: sepanjang modul ini kita konsisten memakai kata <strong>peristiwa</strong> (bukan bergantian dengan &ldquo;kejadian&rdquo;) untuk himpunan bagian dari ruang sampel, dan <strong>saling lepas</strong> (bukan &ldquo;disjoint&rdquo; atau &ldquo;mutually exclusive&rdquo; secara bergantian) untuk peristiwa yang irisannya kosong. Topik peluang bersyarat dan peristiwa saling bebas akan dibahas pada Pertemuan 2.
+      </div>
+    </section>
+
+    <section id="bernoulli">
+      <h2 class="sec-title">3. Percobaan Bernoulli</h2>
+      <p>Banyak eksperimen sehari-hari memiliki pola khusus: hanya dua kemungkinan hasil, dan dapat diulang berkali-kali dengan peluang yang tetap. Pola ini disebut percobaan Bernoulli.</p>
+
+      <div class="box definisi" id="def-1-6">
+        <div class="box-head"><span class="tag">DEFINISI 1.6</span> Percobaan Bernoulli</div>
+        <div class="box-body">
+          <p>Suatu eksperimen disebut percobaan Bernoulli jika memenuhi keempat syarat berikut:</p>
+          <p>1. Ruang sampel diskrit yang hanya terdiri atas dua hasil, yaitu sukses ($s$) dan gagal ($g$), sehingga $S = \{s, g\}$;</p>
+          <p>2. Pengamatan dapat dilakukan berulang-ulang;</p>
+          <p>3. Peluang sukses dan peluang gagal tidak harus sama; dan</p>
+          <p>4. Peluang sukses dari satu pengamatan ke pengamatan berikutnya selalu konstan.</p>
+          <p>Jika peluang sukses $P(s) = p$, maka peluang gagal $P(g) = 1-p$.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.5</span></div>
+        <div class="box-body">
+          <p>Eksperimen melempar sebuah uang logam berulang-ulang, dengan hasil $A$ (angka) dan $G$ (gambar), merupakan percobaan Bernoulli, karena: (1) pengamatan dapat diulang; (2) hasil $A$ dapat dikelompokkan sebagai sukses dan $G$ sebagai gagal; dan (3) peluang munculnya $A$ pada setiap pengamatan selalu konstan, yaitu $P(A) = 1/2$.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="membilang">
+      <h2 class="sec-title">4. Teknik Membilang</h2>
+      <p>Untuk menghitung peluang secara klasik, kita perlu tahu berapa banyak titik sampel yang ada. Tiga aturan membilang berikut adalah alat bantu yang paling sering dipakai.</p>
+
+      <div class="box definisi">
+        <div class="box-head"><span class="tag">ATURAN 1.1</span> Aturan Perkalian</div>
+        <div class="box-body">
+          <p>Jika suatu operasi dapat dilakukan dengan $n_1$ cara, dan untuk setiap cara tersebut operasi kedua dapat dilakukan dengan $n_2$ cara, maka kedua operasi secara bersama-sama dapat dilakukan dengan $n_1 \times n_2$ cara.</p>
+        </div>
+      </div>
+
+      <div class="box definisi">
+        <div class="box-head"><span class="tag">ATURAN 1.2</span> Permutasi</div>
+        <div class="box-body">
+          <p>Banyaknya cara menyusun $r$ objek berurutan dari $n$ objek berbeda adalah</p>
+          $$ P^n_r = \frac{n!}{(n-r)!} $$
+        </div>
+      </div>
+
+      <div class="box definisi">
+        <div class="box-head"><span class="tag">ATURAN 1.3</span> Kombinasi</div>
+        <div class="box-body">
+          <p>Banyaknya cara memilih $r$ objek dari $n$ objek berbeda tanpa memperhatikan urutan adalah</p>
+          $$ \binom{n}{r} = \frac{n!}{r!\,(n-r)!} $$
+        </div>
+      </div>
+    </section>
+
+    <section id="peluang-klasik">
+      <h2 class="sec-title">5. Menghitung Ruang Sampel dan Peluang Klasik</h2>
+
+      <div class="box definisi" id="def-1-7">
+        <div class="box-head"><span class="tag">DEFINISI 1.7</span> Peluang Peristiwa Berhingga (Peluang Klasik)</div>
+        <div class="box-body">
+          <p>Pada eksperimen dengan ruang sampel diskrit berhingga yang setiap titik sampelnya memiliki peluang sama, jika peristiwa $A$ terdiri atas $\#(A)$ titik sampel dan ruang sampel $S$ terdiri atas $\#(S)$ titik sampel, maka</p>
+          $$ P(A) = \frac{\#(A)}{\#(S)} $$
+        </div>
+      </div>
+
+      <div class="box definisi">
+        <div class="box-head"><span class="tag">ATURAN 1.4</span> Langkah-langkah Menghitung Peluang</div>
+        <div class="box-body">
+          <p>Untuk menghitung peluang suatu peristiwa $A \subset S$ dari eksperimen $\mathcal{E}$, ikuti langkah berikut:</p>
+          <p>(i) Definisikan dengan jelas eksperimen $\mathcal{E}$.</p>
+          <p>(ii) Definisikan $S$ dengan mendaftar seluruh titik sampel $E_i$ sampai pada titik yang tidak dapat diuraikan lagi, dan pastikan seluruh $E_i$ membentuk partisi dari $S$.</p>
+          <p>(iii) Hitung peluang masing-masing $E_i$, dan pastikan $0 \le P(E_i) \le 1$ serta $\sum P(E_i) = 1$.</p>
+          <p>(iv) Definisikan unsur-unsur himpunan $A$, dan periksa setiap $E_i$ apakah $E_i \in A$ atau $E_i \notin A$.</p>
+          <p>(v) Tentukan $P(A) = \sum P(E_i)$ untuk $E_i \in A$.</p>
+        </div>
+      </div>
+
+      <div class="box contoh">
+        <div class="box-head"><span class="tag">CONTOH 1.6</span></div>
+        <div class="box-body">
+          <p>Dua dadu dilempar secara saling bebas. Tentukan peluang munculnya mata dadu pertama prima dan mata dadu kedua kuadrat sempurna.</p>
+          <table>
+            <tr><th>$(x,y)$</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+            <tr><td>1</td><td>(1,1)</td><td>(1,2)</td><td>(1,3)</td><td>(1,4)</td><td>(1,5)</td><td>(1,6)</td></tr>
+            <tr><td>2</td><td>(2,1)</td><td>(2,2)</td><td>(2,3)</td><td>(2,4)</td><td>(2,5)</td><td>(2,6)</td></tr>
+            <tr><td>3</td><td>(3,1)</td><td>(3,2)</td><td>(3,3)</td><td>(3,4)</td><td>(3,5)</td><td>(3,6)</td></tr>
+          </table>
+          <p>Mata dadu pertama yang prima: $\{2,3,5\}$. Mata dadu kedua yang kuadrat sempurna: $\{1,4\}$ (karena $1^2=1$ dan $2^2=4$). Jadi peristiwa yang dimaksud memiliki $3 \times 2 = 6$ titik sampel dari $\#(S) = 36$, sehingga peluangnya $P(A) = 6/36 = 1/6$.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="aksioma">
+      <h2 class="sec-title">6. Aksioma Peluang</h2>
+      <p>Peluang klasik hanya berlaku ketika titik sampelnya berhingga dan berpeluang sama. Untuk mencakup situasi yang lebih umum, peluang didefinisikan secara aksiomatik.</p>
+
+      <div class="box definisi" id="def-1-8">
+        <div class="box-head"><span class="tag">DEFINISI 1.8</span> Aksioma Peluang</div>
+        <div class="box-body">
+          <p>Misalkan $S$ adalah ruang sampel dari suatu eksperimen $\mathcal{E}$. Secara aksiomatik, peluang dari suatu peristiwa $A \subset S$, dinotasikan $P(A)$, memenuhi tiga aksioma berikut:</p>
+          <p><strong>Aksioma 1.</strong> $P(A) \ge 0$ untuk setiap peristiwa $A \subseteq S$.</p>
+          <p><strong>Aksioma 2.</strong> Jika $A_1, A_2, A_3, \dots$ adalah peristiwa-peristiwa yang saling lepas dari $S$ (yaitu $A_i \cap A_j = \varnothing$ untuk $i \ne j$), maka</p>
+          $$ P\left(\bigcup_i A_i\right) = \sum_i P(A_i) $$
+          <p><strong>Aksioma 3.</strong> $P(S) = 1$.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teorema">
+      <h2 class="sec-title">7. Teorema Turunan Aksioma Peluang</h2>
+      <p>Dari ketiga aksioma di atas, sejumlah sifat peluang yang sering dipakai dapat diturunkan secara deduktif. Setiap teorema berikut disertai buktinya &mdash; klik judul bukti untuk membukanya.</p>
+
+      <div class="box teorema" id="teo-1-1">
+        <div class="box-head"><span class="tag">TEOREMA 1.1</span> Aturan Komplemen</div>
+        <div class="box-body">
+          <p>Untuk setiap peristiwa $A \subset S$, berlaku $P(A) = 1 - P(A^c)$.</p>
+          <details class="proof">
+            <summary>Lihat bukti</summary>
+            <div class="proof-body">
+              <p>Perhatikan bahwa $S = A \cup A^c$ dan $A \cap A^c = \varnothing$. Berdasarkan Aksioma 2 (peristiwa saling lepas),</p>
+              $$ P(S) = P(A) + P(A^c) $$
+              <p>Berdasarkan Aksioma 3, $P(S) = 1$, sehingga</p>
+              $$ 1 = P(A) + P(A^c) \quad\Longrightarrow\quad P(A) = 1 - P(A^c) $$
+              <p class="qed">&#9633;</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="box teorema" id="teo-1-2">
+        <div class="box-head"><span class="tag">TEOREMA 1.2</span> Peluang Himpunan Kosong</div>
+        <div class="box-body">
+          <p>Peluang dari himpunan kosong adalah nol, $P(\varnothing) = 0$.</p>
+          <details class="proof">
+            <summary>Lihat bukti</summary>
+            <div class="proof-body">
+              <p>Ambil $A = \varnothing$ pada Teorema 1.1. Karena $\varnothing^c = S$, diperoleh</p>
+              $$ P(\varnothing) = 1 - P(\varnothing^c) = 1 - P(S) = 1 - 1 = 0 $$
+              <p class="qed">&#9633;</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="box teorema" id="teo-1-3">
+        <div class="box-head"><span class="tag">TEOREMA 1.3</span> Monotonisitas Peluang</div>
+        <div class="box-body">
+          <p>Jika $B \subset A$, maka $P(B) \le P(A)$.</p>
+          <details class="proof">
+            <summary>Lihat bukti</summary>
+            <div class="proof-body">
+              <p>Karena $B \subset A$, peristiwa $A$ dapat diuraikan sebagai gabungan dua peristiwa yang saling lepas:</p>
+              $$ A = B \cup (A \cap B^c), \qquad B \cap (A \cap B^c) = \varnothing $$
+              <p>Berdasarkan Aksioma 2,</p>
+              $$ P(A) = P(B) + P(A \cap B^c) $$
+              <p>Berdasarkan Aksioma 1, $P(A \cap B^c) \ge 0$, sehingga $P(A) \ge P(B)$, yaitu $P(B) \le P(A)$.</p>
+              <p class="qed">&#9633;</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="box teorema" id="teo-1-4">
+        <div class="box-head"><span class="tag">TEOREMA 1.4</span> Aturan Penjumlahan Peluang</div>
+        <div class="box-body">
+          <p>Untuk sebarang dua peristiwa $A$ dan $B$,</p>
+          $$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+          <details class="proof">
+            <summary>Lihat bukti</summary>
+            <div class="proof-body">
+              <p>Peristiwa $A \cup B$ dapat diuraikan menjadi tiga bagian yang saling lepas: $A \cap B^c$, $A \cap B$, dan $A^c \cap B$. Berdasarkan Aksioma 2,</p>
+              $$ P(A \cup B) = P(A \cap B^c) + P(A \cap B) + P(A^c \cap B) $$
+              <p>Di sisi lain, dengan cara yang sama seperti pembuktian Teorema 1.3,</p>
+              $$ P(A) = P(A \cap B^c) + P(A \cap B), \qquad P(B) = P(A^c \cap B) + P(A \cap B) $$
+              <p>Menjumlahkan $P(A)$ dan $P(B)$ lalu mengurangi $P(A \cap B)$ satu kali (karena terhitung dua kali) menghasilkan</p>
+              $$ P(A) + P(B) - P(A \cap B) = P(A \cap B^c) + P(A^c \cap B) + P(A \cap B) = P(A \cup B) $$
+              <p class="qed">&#9633;</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="box teorema" id="teo-1-5">
+        <div class="box-head"><span class="tag">AKIBAT 1.4.1</span> Kasus Peristiwa Saling Lepas</div>
+        <div class="box-body">
+          <p>Jika $A$ dan $B$ saling lepas (Definisi 1.5), maka $A \cap B = \varnothing$ sehingga $P(A \cap B) = P(\varnothing) = 0$ (Teorema 1.2). Aturan penjumlahan pada Teorema 1.4 tereduksi menjadi</p>
+          $$ P(A \cup B) = P(A) + P(B) $$
+        </div>
+      </div>
+    </section>
+
+    <section id="latihan">
+      <h2 class="sec-title">8. Latihan Terbimbing</h2>
+      <p>Kerjakan terlebih dahulu sebelum membuka jawaban. Diskusikan dengan teman sebangku jika hasil belum sesuai.</p>
+
+      <div class="quiz">
+        <div class="qnum">Soal 1</div>
+        <p>Sebuah kotak berisi 10 kartu bernomor 1 sampai 10. Satu kartu diambil secara acak. Tentukan peluang terambilnya kartu bernomor prima.</p>
+        <details>
+          <summary>Tampilkan jawaban</summary>
+          <div class="ans">Bilangan prima antara 1 dan 10 adalah $\{2,3,5,7\}$, sehingga $\#(A) = 4$ dan $\#(S) = 10$. Maka $P(A) = 4/10 = 2/5$.</div>
+        </details>
+      </div>
+
+      <div class="quiz">
+        <div class="qnum">Soal 2</div>
+        <p>Dua dadu dilempar bersama-sama. Tentukan peluang jumlah kedua mata dadu sama dengan 7 atau sama dengan 11. Gunakan Akibat 1.4.1.</p>
+        <details>
+          <summary>Tampilkan jawaban</summary>
+          <div class="ans">Peristiwa jumlah $=7$: $A=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}$, $\#(A)=6$. Peristiwa jumlah $=11$: $B=\{(5,6),(6,5)\}$, $\#(B)=2$. Karena $A$ dan $B$ saling lepas (jumlah tidak mungkin 7 sekaligus 11), $P(A \cup B) = P(A)+P(B) = 6/36 + 2/36 = 8/36 = 2/9$.</div>
+        </details>
+      </div>
+
+      <div class="quiz">
+        <div class="qnum">Soal 3</div>
+        <p>Diketahui $P(A) = 0.4$, $P(B) = 0.5$, dan $P(A \cap B) = 0.2$. Tentukan $P(A \cup B)$ dan $P(A^c)$.</p>
+        <details>
+          <summary>Tampilkan jawaban</summary>
+          <div class="ans">Dengan Teorema 1.4: $P(A \cup B) = 0.4 + 0.5 - 0.2 = 0.7$. Dengan Teorema 1.1: $P(A^c) = 1 - 0.4 = 0.6$.</div>
+        </details>
+      </div>
+
+      <div class="quiz">
+        <div class="qnum">Soal 4 &mdash; refleksi</div>
+        <p>Jelaskan dengan kata-katamu sendiri mengapa Teorema 1.3 (monotonisitas) masuk akal secara intuitif, tanpa menggunakan simbol matematis.</p>
+        <details>
+          <summary>Tampilkan panduan jawaban</summary>
+          <div class="ans">Jika $B$ adalah bagian dari $A$, maka setiap hasil yang membuat $B$ terjadi juga membuat $A$ terjadi &mdash; tapi tidak sebaliknya. Karena itu wajar peluang $A$ tidak mungkin lebih kecil daripada peluang $B$.</div>
+        </details>
+      </div>
+    </section>
+
+    <section id="glosarium">
+      <h2 class="sec-title">9. Glosarium Istilah Baku</h2>
+      <p>Daftar padanan istilah yang dipakai konsisten di seluruh modul mata kuliah ini, agar tidak bercampur dengan istilah lain pada pertemuan berikutnya.</p>
+      <div class="glossary-grid">
+        <div class="term"><span class="name">Peristiwa</span><span>Himpunan bagian dari ruang sampel $S$. Tidak dipertukarkan dengan &ldquo;kejadian&rdquo;.</span></div>
+        <div class="term"><span class="name">Ruang sampel</span><span>Himpunan semua titik sampel yang mungkin, dinotasikan $S$.</span></div>
+        <div class="term"><span class="name">Titik sampel</span><span>Hasil eksperimen yang tidak dapat diuraikan lagi, dinotasikan $E_i$.</span></div>
+        <div class="term"><span class="name">Saling lepas</span><span>$A \cap B = \varnothing$. Berbeda dari &ldquo;saling bebas&rdquo; (independen) yang dibahas Pertemuan 2.</span></div>
+        <div class="term"><span class="name">Komplemen</span><span>$A^c$, yaitu peristiwa &ldquo;tidak $A$&rdquo;.</span></div>
+        <div class="term"><span class="name">Peluang klasik</span><span>$P(A) = \#(A)/\#(S)$, berlaku hanya jika titik sampel berpeluang sama.</span></div>
+      </div>
+    </section>
+
+    <footer class="pagefoot">
+      Statistika Matematika I (PMA4119) &middot; Program Studi Pendidikan Matematika, FKIP UNIROW Tuban &middot; Rujukan utama: Walpole, R.E., Myers, R.H., Myers, S.L., &amp; Ye, K. (2011). <em>Probability &amp; Statistics for Engineers &amp; Scientists</em> (9th ed.). Prentice Hall.
+      <div class="nav-link-btn">&larr; Pertemuan berikutnya: Peluang Bersyarat &amp; Peristiwa Saling Bebas (belum dibuat)</div>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
