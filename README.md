@@ -8,10 +8,21 @@ Repositori resmi materi perkuliahan, modul pembelajaran interaktif (Pertemuan 1�
 
 ---
 
-## 🌐 Modul Pembelajaran Interaktif (GitHub Pages)
+## 🌐 Link Akses Modul Interaktif (GitHub Pages)
 
-Akses modul web interaktif multi-tab langsung melalui browser:
-👉 **[Buka Modul Interaktif Statistika Matematika I](https://gustidash-cell.github.io/statistika-matematika-1/Statistika-Matematika-I-Modul-Lengkap.html)**
+Klik tautan di bawah ini untuk langsung membuka modul web interaktif multi-tab di browser Anda:
+👉 **[Buka Modul Interaktif Statistika Matematika I](https://gustidash-cell.github.io/statistika-matematika-1/Statistika-Matematika-I-Modul-Lengkap.html?v=2)**
+
+*(Atau via URL Root: https://gustidash-cell.github.io/statistika-matematika-1/?v=2)*
+
+---
+
+## 👨‍🏫 Informasi Pengampu &amp; Pengembang
+
+- **Dosen Pengampu &amp; Pengembang**: Gusti Uripno, M.Pd.
+- **Program Studi**: Pendidikan Matematika
+- **Fakultas**: Keguruan dan Ilmu Pendidikan (FKIP)
+- **Perguruan Tinggi**: Universitas PGRI Ronggolawe (UNIROW) Tuban
 
 ---
 
@@ -50,12 +61,3 @@ Untuk membuka modul di komputer lokal tanpa koneksi internet:
    git clone https://github.com/gustidash-cell/statistika-matematika-1.git
    ```
 2. Buka file `Statistika-Matematika-I-Modul-Lengkap.html` menggunakan browser favorit Anda (Chrome, Edge, Firefox).
-
----
-
-## 👤 Pengampu Mata Kuliah
-
-- **Dosen Pengampu**: Gusti Uripno, M.Pd.
-- **Program Studi**: Pendidikan Matematika
-- **Fakultas**: Keguruan dan Ilmu Pendidikan (FKIP)
-- **Perguruan Tinggi**: Universitas PGRI Ronggolawe (UNIROW) Tuban
