@@ -4,3 +4,7 @@ __pycache__/
 ~$*
 .DS_Store
 Thumbs.db
+_arsip_rahasia_lokal/
+*.backup.html
+* (old).html
+*.py

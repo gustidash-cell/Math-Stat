@@ -11,7 +11,7 @@ Repositori resmi materi perkuliahan, modul pembelajaran interaktif (Pertemuan 1�
 ## 🌐 Modul Pembelajaran Interaktif (GitHub Pages)
 
 Klik tautan resmi di bawah ini untuk membuka modul web interaktif multi-tab secara langsung:
-👉 **[BUKA MODUL INTERAKTIF STATISTIKA MATEMATIKA I](https://gustidash-cell.github.io/statistika-matematika-1/)**
+👉 **[BUKA MODUL INTERAKTIF STATISTIKA MATEMATIKA I](https://gustidash-cell.github.io/Math-Stat/)**
 
 ---
 
@@ -45,11 +45,13 @@ Modul ini disusun berdasarkan **RPS Berbasis OBE 2026** dan rujukan utama **Walp
 
 ## 💻 Fitur Modul Web HTML (`index.html`)
 
-- 🎯 **Navigasi Tab Interaktif**: Beralih antar pertemuan (P1–P7) tanpa mereload halaman.
+- 🌐 **Fitur Dwibahasa (ID | EN)**: Dilengkapi tombol alih bahasa instan dengan dukungan LaTeX formula matematika tanpa merusak simbol.
+- 🎯 **Navigasi Tab Interaktif**: Beralih antar pertemuan (P1–P7) tanpa memuat ulang halaman.
 - 📐 **Format Rumus Presisi (MathJax 3)**: Semua persamaan dan simbol matematika diproses secara dinamis.
-- 📖 **Bukti Teorema Interaktif**: Klik *Lihat Bukti* (`<details class="proof">`) untuk mempelajari langkah pembuktian deduktif.
-- 💡 **Soal Terbimbing &amp; Kunci Jawaban**: Disertai latihan interaktif dan refleksi konsep.
-- 📱 **Desain Responsif &amp; Modern**: Tipografi elegan (*Fraunces*, *Source Serif 4*, *JetBrains Mono*) dengan palet warna khusus.
+- 💡 **Contoh Masalah &amp; Korelasi Dunia Nyata**: Kotak mandiri berisi studi kasus nyata dan perumusan masalah statistik aplikatif.
+- 📂 **Dropdown Penyelesaian Bertahap**: Langkah penyelesaian matematis tersembunyi rapi di dalam dropdown interaktif untuk melatih pemikiran mandiri mahasiswa.
+- 🌓 **Mode Terang &amp; Gelap (Dark Mode)**: Antarmuka yang ramah di mata dengan standar kontras WCAG AAA.
+- 📱 **Desain Editorial &amp; Responsif**: Tipografi klasik (*Fraunces*, *Source Serif 4*, *JetBrains Mono*) dan palet warna ramah baca.
 
 ---
 
@@ -58,6 +60,6 @@ Modul ini disusun berdasarkan **RPS Berbasis OBE 2026** dan rujukan utama **Walp
 Untuk membuka modul di komputer lokal tanpa koneksi internet:
 1. Clone repositori ini:
    ```bash
-   git clone https://github.com/gustidash-cell/statistika-matematika-1.git
+   git clone https://github.com/gustidash-cell/Math-Stat.git
    ```
 2. Buka file `index.html` atau `Statistika-Matematika-I-Modul-Lengkap.html` menggunakan browser favorit Anda.
