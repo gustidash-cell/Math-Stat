@@ -1,4 +1,4 @@
-# Statistika Matematika I &mdash; Modul &amp; Bahan Ajar Interaktif
+# Statistika Matematika I; Modul &amp; Bahan Ajar Interaktif
 
 ![UNIROW Tuban](https://img.shields.io/badge/Kampus-UNIROW%20Tuban-blue)
 ![Kurikulum](https://img.shields.io/badge/Kurikulum-OBE%202026-teal)
